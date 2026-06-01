@@ -1,0 +1,7 @@
+.DS_Store
+.omx/
+drafts/
+references/
+prompts/
+AGENTS.md
+*.log
