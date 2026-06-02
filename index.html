@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nottia Weekly Newsletteer</title>
+  <title>Nottia Weekly Newsletter</title>
   <style>
     :root {
       --ink: #17191c;
@@ -12,13 +12,7 @@
       --bg: #f7f6f1;
       --panel: #ffffff;
       --blue: #255e7c;
-      --green: #286f58;
       --rust: #8a5636;
-      --gold: #b78b2d;
-      --soft-blue: #e8f1f5;
-      --soft-green: #e9f3ee;
-      --soft-rust: #f4ece5;
-      --soft-gold: #f6efd9;
     }
 
     * {
@@ -137,13 +131,27 @@
     }
 
     .issue-card {
-      display: grid;
-      align-content: space-between;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       min-height: 330px;
       padding: 22px;
       background: var(--panel);
       border: 1px solid var(--line);
       box-shadow: 0 18px 40px rgba(23, 25, 28, 0.06);
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .issue-card:hover,
+    .issue-card:focus-visible {
+      border-color: rgba(37, 94, 124, 0.5);
+      box-shadow: 0 20px 48px rgba(23, 25, 28, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .issue-card:focus-visible {
+      outline: 3px solid rgba(37, 94, 124, 0.24);
+      outline-offset: 4px;
     }
 
     .issue-date {
@@ -167,38 +175,21 @@
       font-size: 15px;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
-    }
-
-    .tag {
+    .issue-cta {
       display: inline-flex;
-      min-height: 27px;
+      width: fit-content;
+      min-height: 34px;
       align-items: center;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: var(--soft-blue);
-      color: #263036;
-      font-size: 12px;
+      margin-top: 26px;
+      color: var(--blue);
+      font-size: 14px;
       font-weight: 800;
     }
 
-    .tag.green {
-      background: var(--soft-green);
-      color: var(--green);
-    }
-
-    .tag.rust {
-      background: var(--soft-rust);
-      color: var(--rust);
-    }
-
-    .tag.gold {
-      background: var(--soft-gold);
-      color: #745714;
+    .issue-card:hover .issue-cta,
+    .issue-card:focus-visible .issue-cta {
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     .section-title {
@@ -210,87 +201,39 @@
       text-transform: uppercase;
     }
 
-    .digest {
+    .editorial-standard {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
+      grid-template-columns: 240px minmax(0, 1fr);
       gap: 24px;
       padding: 28px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .panel {
-      padding: 22px;
-      background: var(--panel);
-      border: 1px solid var(--line);
+    .editorial-copy {
+      display: grid;
+      gap: 14px;
     }
 
-    .signal-list {
+    .editorial-copy p {
+      margin: 0;
+      max-width: 780px;
+      color: #3b4248;
+      font-size: 16px;
+    }
+
+    .standard-list {
       display: grid;
-      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .signal-list li {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .signal-list li:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .number {
-      display: inline-flex;
-      width: 30px;
-      height: 30px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      background: var(--bg);
-      color: var(--rust);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .signal-list p,
-    .panel p {
-      margin: 0;
+    .standard-list li {
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
       color: #3b4248;
-      font-size: 15px;
-    }
-
-    .coverage {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .coverage article {
-      min-height: 172px;
-      padding: 18px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-
-    .coverage h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      line-height: 1.3;
-      letter-spacing: 0;
-    }
-
-    .coverage p {
-      margin: 0;
-      color: #40474d;
       font-size: 14px;
     }
 
@@ -347,13 +290,9 @@
 
     @media (max-width: 900px) {
       .hero,
-      .digest,
+      .editorial-standard,
       .archive {
         grid-template-columns: 1fr;
-      }
-
-      .coverage {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -371,8 +310,11 @@
         min-height: 0;
       }
 
-      .coverage,
       .archive-list a {
+        grid-template-columns: 1fr;
+      }
+
+      .standard-list {
         grid-template-columns: 1fr;
       }
 
@@ -389,10 +331,9 @@
 <body>
   <main class="wrap">
     <div class="topbar">
-      <a class="brand" href="./">Nottia Weekly Newsletteer</a>
+      <a class="brand" href="./">Nottia Weekly Newsletter</a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#latest">최신호</a>
-        <a href="#coverage">다루는 것</a>
+        <a href="issues/2026-06-02.html">최신호</a>
         <a href="#archive">지난 호</a>
       </nav>
     </div>
@@ -401,84 +342,41 @@
       <div>
         <p class="eyebrow">Weekly AI Newsletter</p>
         <h1>한 주의 AI 흐름을 실제 변화 중심으로 정리합니다</h1>
-        <p class="subtitle">Nottia Weekly Newsletteer는 모델 발표, 제품 업데이트, 개발자 도구, 연구 신호를 모아 “무엇이 달라졌고 어디에 영향을 주는가”를 짧고 밀도 있게 전합니다.</p>
+        <p class="subtitle">Nottia Weekly Newsletter는 새 모델 이름보다 사용자가 체감할 변화, 검증 가능한 출처, 실제 도입 시 확인해야 할 조건을 우선합니다.</p>
         <div class="actions">
-          <a class="button" href="issues/2026-06-02.html">최신호 읽기</a>
+          <a class="button" href="issues/2026-06-02.html">창간호 읽기</a>
           <a class="button secondary" href="#archive">지난 호 보기</a>
         </div>
       </div>
 
-      <aside class="issue-card" id="latest" aria-label="Latest issue">
+      <a class="issue-card" id="latest" href="issues/2026-06-02.html" aria-label="2026년 6월 2일 창간호 읽기">
         <div>
           <span class="issue-date">Latest Issue / 2026.06.02</span>
           <h2>AI가 실험실을 나와 운영 환경으로 들어간 한 주</h2>
           <p>창간호는 모델 성능 경쟁보다 배포 경로, 비용 통제, 출처 검증, 에이전트 평가처럼 실제 도입 조건으로 이번 주 AI 흐름을 읽습니다.</p>
-          <div class="tag-row" aria-label="Issue sections">
-            <span class="tag rust">Icebreaker</span>
-            <span class="tag">Main</span>
-            <span class="tag green">Dev</span>
-            <span class="tag gold">Research</span>
-          </div>
         </div>
-      </aside>
+        <span class="issue-cta">창간호로 이동</span>
+      </a>
     </header>
 
-    <section class="digest" aria-label="This week highlights">
-      <div class="panel">
-        <h2 class="section-title">This Week in 4 Lines</h2>
-        <ol class="signal-list">
-          <li>
-            <span class="number">01</span>
-            <p>OpenAI와 AWS 발표는 프런티어 모델 경쟁이 기업의 보안, 조달, 거버넌스 안으로 들어가고 있음을 보여줍니다.</p>
-          </li>
-          <li>
-            <span class="number">02</span>
-            <p>Claude Opus 4.8과 Codex 업데이트는 AI가 코드를 쓰는 단계를 넘어, 작업을 나누고 화면을 보며 검증하는 방향으로 이동했습니다.</p>
-          </li>
-          <li>
-            <span class="number">03</span>
-            <p>GitHub Copilot과 Microsoft 365 Copilot은 사용량, 예산, 업무 맥락처럼 운영 조건을 제품의 전면에 올렸습니다.</p>
-          </li>
-          <li>
-            <span class="number">04</span>
-            <p>이번 주 연구 흐름은 더 똑똑한 에이전트보다 어떻게 평가하고 고칠 것인가에 집중했습니다.</p>
-          </li>
-        </ol>
-      </div>
-
-      <aside class="panel">
+    <section class="editorial-standard" aria-label="Editorial standard">
+      <div>
         <h2 class="section-title">Editorial Standard</h2>
-        <p>새 모델 이름보다 사용자가 체감할 변화, 검증 가능한 출처, 실제 도입 시 확인해야 할 조건을 우선합니다. 창간호부터 카드형 키워드와 짧은 해설로 빠르게 읽히는 뉴스레터를 지향합니다.</p>
-      </aside>
-    </section>
-
-    <section class="coverage" id="coverage" aria-label="Coverage areas">
-      <article>
-        <span class="tag rust">Products</span>
-        <h3>제품과 사용면</h3>
-        <p>검색, 브라우저, 크리에이티브 도구, 업무 앱에서 AI 기능이 어떻게 배치되는지 봅니다.</p>
-      </article>
-      <article>
-        <span class="tag">Models</span>
-        <h3>모델 발표</h3>
-        <p>성능 수치만 옮기지 않고 가격, 접근성, 제한, 실제 작업 흐름까지 함께 봅니다.</p>
-      </article>
-      <article>
-        <span class="tag green">Developer</span>
-        <h3>개발자 도구</h3>
-        <p>IDE, 에이전트 런타임, API, 컴퓨터 사용 기능이 개발 방식에 주는 변화를 정리합니다.</p>
-      </article>
-      <article>
-        <span class="tag gold">Research</span>
-        <h3>연구 신호</h3>
-        <p>논문은 결과보다 평가 방법, 안전성, 재현 가능성, 실무로 이어질 힌트를 중심으로 읽습니다.</p>
-      </article>
+      </div>
+      <div class="editorial-copy">
+        <p>홈은 최신호와 아카이브로 빠르게 연결하고, 판단에 필요한 맥락은 각 호 안에서 완결합니다. 모든 글은 “무엇이 달라졌고, 어디에 영향을 주며, 실제로 확인해야 할 조건은 무엇인가”를 기준으로 편집합니다.</p>
+        <ul class="standard-list">
+          <li>출처가 확인되는 변화만 다룹니다.</li>
+          <li>제품명보다 사용자 경험의 변화를 먼저 봅니다.</li>
+          <li>긴 설명보다 다음 판단에 필요한 문장을 남깁니다.</li>
+        </ul>
+      </div>
     </section>
 
     <section class="archive" id="archive" aria-label="Archive">
       <div class="archive-copy">
         <h2 class="section-title">Archive</h2>
-        <p>지난 호는 날짜별로 쌓입니다. 각 호는 핵심 요약, 주요 뉴스, 개발자 업데이트, 연구 노트를 한 페이지에 담습니다.</p>
+        <p>지금은 창간호부터 시작합니다. 앞으로 지난 호는 날짜별로 이곳에 쌓입니다.</p>
       </div>
       <ul class="archive-list">
         <li>
@@ -486,20 +384,6 @@
             <span class="archive-date">2026.06.02</span>
             <span class="archive-title">AI가 실험실을 나와 운영 환경으로 들어간 한 주</span>
             <span class="archive-meta">창간호</span>
-          </a>
-        </li>
-        <li>
-          <a href="issues/2026-06-01-1.html">
-            <span class="archive-date">2026.06.01-1</span>
-            <span class="archive-title">키워드로 먼저 보는 이번 주 AI 변화</span>
-            <span class="archive-meta">카드형 개정판</span>
-          </a>
-        </li>
-        <li>
-          <a href="issues/2026-06-01.html">
-            <span class="archive-date">2026.06.01</span>
-            <span class="archive-title">에이전트가 실제 작업면으로 내려온 한 주</span>
-            <span class="archive-meta">원본 읽기</span>
           </a>
         </li>
       </ul>
