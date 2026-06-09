@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nottia Weekly Newsletter - 2026-06-09</title>
+  <style>
+    :root {
+      --ink: #151718;
+      --sub: #5d646b;
+      --line: #d8dde2;
+      --bg: #f6f7f4;
+      --panel: #ffffff;
+      --tint: #eef4f2;
+      --blue: #255e7c;
+      --green: #286f58;
+      --rust: #8a5636;
+      --soft-blue: #e8f1f5;
+      --soft-green: #e9f3ee;
+      --soft-rust: #f4ece5;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37, 94, 124, 0.28);
+    }
+
+    a:hover {
+      border-bottom-color: var(--blue);
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 30px 0 58px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+    }
+
+    .topbar strong {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 34px 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 720px;
+      color: #343a40;
+      font-size: 17px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .digest {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .glance,
+    .editorial {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .glance ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .glance li + li {
+      margin-top: 10px;
+    }
+
+    .editorial p {
+      margin: 0;
+      color: #353b41;
+    }
+
+    .brief-list {
+      display: grid;
+      gap: 14px;
+      padding: 24px 0;
+    }
+
+    .brief {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .label {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 25px;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: #263036;
+      background: var(--soft-blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge.green {
+      background: var(--soft-green);
+      color: var(--green);
+    }
+
+    .badge.rust {
+      background: var(--soft-rust);
+      color: var(--rust);
+    }
+
+    .signal {
+      color: var(--sub);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .brief h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.28;
+      letter-spacing: 0;
+    }
+
+    .brief-body p,
+    .brief p {
+      margin: 10px 0 0;
+      color: #363d43;
+      font-size: 15px;
+    }
+
+    .brief-body p:first-child {
+      margin-top: 10px;
+    }
+
+    .brief-body p + p {
+      margin-top: 8px;
+    }
+
+    .keyword-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .keyword-card {
+      min-height: 118px;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+    }
+
+    .keyword-title {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .keyword-card p {
+      margin: 0;
+      color: #363d43;
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 4px 10px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: #25313a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .source-table {
+      margin-top: 18px;
+      padding-top: 20px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .source-grid li {
+      padding: 0 0 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 820px) {
+      .digest,
+      .brief {
+        grid-template-columns: 1fr;
+      }
+
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .keyword-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <span><strong>Nottia Weekly Newsletter</strong> / 2026년 6월 9일</span>
+      <span>2026.06.02 - 2026.06.09</span>
+    </div>
+
+    <header class="hero">
+      <div>
+        <h1>AI가 더 오래 기억하고 더 보이게 일하기 시작한 주</h1>
+        <p class="subtitle">이번 주의 신호는 더 큰 모델 하나가 아니라 기억, 작업면, 에이전트 학습 환경처럼 AI가 실제 업무 안에서 오래 작동하기 위한 기반으로 모였습니다.</p>
+      </div>
+    </header>
+
+    <section class="digest">
+      <div class="glance">
+        <h2 class="section-title">This Week in 4 Lines</h2>
+        <ol>
+          <li>ChatGPT 메모리는 오래된 기억을 줄이고 현재 맥락을 더 잘 반영하는 방향으로 바뀌었습니다.</li>
+          <li>Codex와 Copilot은 코드 편집기를 넘어 보고서, 브라우저, 터미널, PR 흐름까지 이어지는 작업면을 넓혔습니다.</li>
+          <li>Google, Microsoft, Hugging Face의 발표는 에이전트를 “제품 기능”보다 운영 가능한 시스템과 학습 환경으로 보는 흐름을 보여줍니다.</li>
+          <li>이번 주 연구는 멀티 에이전트 컴퓨터 사용, 스킬 표준화, ADK 평가, 보안 위험처럼 에이전트의 실행 조건을 정면으로 다룹니다.</li>
+        </ol>
+      </div>
+      <div class="editorial">
+        <h2 class="section-title">Editorial Note</h2>
+        <p>이번 주 AI 흐름은 모델 성능표보다 “AI가 어떻게 기억하고, 어디서 일하고, 어떤 환경에서 검증되는가”에 가깝습니다. 개인 사용자에게는 오래가는 맥락과 눈에 보이는 작업 상태가 중요해졌고, 개발자에게는 CLI, 데스크톱 앱, 실행 환경, 스킬 같은 주변 인프라가 모델만큼 중요한 선택지가 됐습니다. 에이전트가 더 많은 일을 맡을수록 좋은 답변보다 추적 가능한 작업, 관리 가능한 권한, 재현 가능한 평가가 핵심 경쟁력이 됩니다.</p>
+      </div>
+    </section>
+
+    <section class="brief-list" aria-label="Briefing list">
+      <article class="brief">
+        <div class="label">
+          <span class="badge rust">01 Icebreaker</span>
+          <span class="signal">선정 이유: 개인화 신뢰</span>
+        </div>
+        <div>
+          <h2>ChatGPT 메모리, “저장”보다 “현재성”을 앞세우다</h2>
+          <div class="brief-body">
+            <p>OpenAI는 ChatGPT의 메모리 합성 시스템을 더 최신성 있고 확장 가능한 구조로 바꾸기 시작했습니다. 사용자가 매번 다시 설명하지 않아도 되게 하는 동시에, 오래되어 틀린 기억을 줄이는 것이 핵심입니다.</p>
+            <div class="keyword-cards" aria-label="ChatGPT 메모리 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">오래된 기억 줄이기</strong>
+                <p>새 시스템은 선호, 목표, 진행 중인 일을 더 최신 상태로 반영하도록 설계됐습니다. 여행, 프로젝트, 취향처럼 시간이 지나면 의미가 바뀌는 정보가 특히 중요합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">미국 Plus와 Pro부터</strong>
+                <p>2026년 6월 4일 기준 미국의 Plus와 Pro 사용자에게 먼저 적용됩니다. OpenAI는 이후 몇 주 동안 Free와 Go 요금제 및 추가 국가로 넓힌다고 설명했습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">5배 가벼운 기반</strong>
+                <p>OpenAI는 최근 개선으로 dreaming 제공에 필요한 연산량을 약 5배 줄였다고 밝혔습니다. 더 많은 사용자에게 메모리를 제공하기 위한 인프라 변화입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">요약으로 검토</strong>
+                <p>사용자는 메모리 요약 페이지에서 모델이 사용할 수 있는 기억을 검토하고 수정할 수 있습니다. 개인화가 강해질수록 “무엇을 기억하는지 볼 수 있음”이 신뢰 조건이 됩니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/index/chatgpt-memory-dreaming/">OpenAI Dreaming</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 비개발자 자동화</span>
+        </div>
+        <div>
+          <h2>Codex가 코딩 도구에서 지식 업무 도구로 넓어지다</h2>
+          <div class="brief-body">
+            <p>OpenAI는 Codex 사용이 개발자 중심을 넘어 보고서, 스프레드시트, 발표자료, 계약서 같은 지식 작업으로 확장되고 있다고 밝혔습니다. 바이브 코딩의 의미도 “앱 만들기”에서 “일의 병목을 자동화하기”로 넓어지고 있습니다.</p>
+            <div class="keyword-cards" aria-label="Codex 지식 업무 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">주간 사용자 500만+</strong>
+                <p>OpenAI는 Codex가 주간 활성 사용자 500만 명을 넘었고, 2월 데스크톱 앱 출시 이후 6배 이상 늘었다고 밝혔습니다. 숫자보다 중요한 점은 사용 표면이 넓어졌다는 것입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">지식 근로자 20%</strong>
+                <p>개발자가 여전히 가장 큰 그룹이지만 지식 근로자가 약 20%를 차지한다고 설명했습니다. 이 그룹은 개발자보다 3배 이상 빠르게 늘고 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">문서도 작업 산출물</strong>
+                <p>보고서, 스프레드시트, 발표자료, 계약서 작성이 주요 사용 사례로 제시됐습니다. 코드를 몰라도 반복적인 자료 작성과 분석을 에이전트에게 맡기는 흐름입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">병렬 작업 습관</strong>
+                <p>여러 Codex 작업을 동시에 실행해 조사, 데이터 분석, 초안 작성을 나눠 맡기는 패턴이 늘고 있습니다. AI 활용 역량은 한 번의 프롬프트보다 작업 분해 능력에 가까워집니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/index/codex-for-knowledge-work/">OpenAI Codex report note</a>
+            <a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">OpenAI Codex report PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: I/O 핵심 신호</span>
+        </div>
+        <div>
+          <h2>Google은 Gemini를 “대답 모델”보다 “행동 모델”로 묶었다</h2>
+          <div class="brief-body">
+            <p>Google의 2026년 5월 AI 업데이트 요약은 Gemini 3.5, Gemini Omni, Android와 Health, 쇼핑 기능을 하나의 에이전트 흐름으로 묶어 보여줍니다. 핵심은 AI가 검색창 밖에서 앱과 작업 사이를 움직이기 시작했다는 점입니다.</p>
+            <div class="keyword-cards" aria-label="Google Gemini 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">Gemini 3.5는 행동 쪽으로</strong>
+                <p>Google은 Gemini 3.5를 에이전트와 코딩을 위한 프런티어 지능으로 설명했습니다. 복잡한 다단계 워크플로를 앱 전반에서 실행하는 방향입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Omni는 입력을 섞음</strong>
+                <p>Gemini Omni는 이미지, 오디오, 비디오, 텍스트를 입력으로 받아 영상 생성까지 연결하는 모델로 소개됐습니다. 멀티모달은 보기 기능을 넘어 제작 흐름으로 이동합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">3D 장소도 브라우저로</strong>
+                <p>Project Genie와 Street View를 결합해 실제 장소를 3D 환경처럼 탐색하는 실험도 언급됐습니다. AI 생성은 이미지 한 장보다 상호작용 가능한 공간으로 넓어지고 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">생활 앱에 붙는 에이전트</strong>
+                <p>Universal Cart, Gemini 앱, Google Health 같은 예시는 AI가 별도 앱보다 기존 생활 흐름에 붙는 방향을 보여줍니다. 사용자는 “어느 모델이냐”보다 “어느 행동을 줄여주느냐”를 보게 됩니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/">Google AI May 2026 roundup</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 엔터프라이즈 운영</span>
+        </div>
+        <div>
+          <h2>Microsoft는 에이전트를 제품 묶음이 아니라 운영 시스템으로 설명했다</h2>
+          <div class="brief-body">
+            <p>Microsoft는 Azure, GitHub, Fabric, Foundry, Windows, Microsoft 365, 보안 계층을 하나의 에이전트 시스템으로 묶겠다는 방향을 제시했습니다. 기업 도입의 핵심이 “무엇을 만들 수 있나”에서 “어떻게 통제하며 운영하나”로 이동하고 있습니다.</p>
+            <div class="keyword-cards" aria-label="Microsoft agentic enterprise 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">하나의 통합 스택</strong>
+                <p>Microsoft는 에이전트를 구축, 실행, 거버넌스, 개선까지 한 시스템 안에서 다뤄야 한다고 설명했습니다. 여러 도구를 나중에 이어 붙이는 방식은 위험과 지연을 만든다는 판단입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">모델 선택도 운영 변수</strong>
+                <p>Microsoft 모델, 파트너 모델, 오픈 모델을 작업별로 고르는 유연성이 강조됐습니다. 앞으로 에이전트 운영은 “최고 모델 하나”가 아니라 품질, 속도, 비용의 조합 문제가 됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">보안은 나중에 붙이지 않음</strong>
+                <p>Entra, Purview, Defender, Agent 365 같은 계층을 통해 권한, 감사, 컴플라이언스를 처음부터 포함해야 한다는 메시지입니다. 에이전트가 실제 업무를 건드릴수록 권한 설계가 제품 기능이 됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">피드백이 시스템을 키움</strong>
+                <p>에이전트 행동, 결과, 사람의 피드백이 다시 시스템 개선으로 들어가야 한다고 설명했습니다. 실험용 챗봇과 운영용 에이전트를 가르는 기준입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://blogs.microsoft.com/blog/2026/06/02/ai-alone-wont-change-your-business-the-system-running-it-will/">Microsoft agentic enterprise</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 오픈 에이전트 학습</span>
+        </div>
+        <div>
+          <h2>OpenEnv, 오픈소스 에이전트 RL의 공통 실행층을 노린다</h2>
+          <div class="brief-body">
+            <p>Hugging Face는 OpenEnv를 에이전트가 상호작용하는 터미널, 브라우저, 기타 환경을 만들고 배포하는 공통 계층으로 재정의했습니다. 오픈 모델도 특정 하네스와 환경을 잘 쓰도록 훈련하려면 실행 환경 표준이 필요하다는 문제의식입니다.</p>
+            <div class="keyword-cards" aria-label="OpenEnv 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">환경을 꽂는 소켓</strong>
+                <p>OpenEnv는 보상 함수를 정하는 프레임워크가 아니라 환경을 게시, 배포, 소비하는 인터페이스 계층입니다. 여러 학습 라이브러리가 같은 환경을 다룰 수 있게 하는 역할입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Gymnasium식 API</strong>
+                <p>환경은 reset(), step(), state() 같은 익숙한 API를 노출하고 클라이언트/서버 구조로 동작합니다. 에이전트 훈련과 평가를 재현 가능하게 만드는 기반입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">HTTP, WebSocket, Docker, MCP</strong>
+                <p>표준 프로토콜과 Docker 패키징, MCP 호환성을 내세웠습니다. 시뮬레이션에서 쓰던 환경이 실제 도구 연결과 더 가까워지는 방향입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">공동 거버넌스 전환</strong>
+                <p>Meta-PyTorch, Reflection, Unsloth, Modal, Prime Intellect, Nvidia, Mercor, Fleet AI, Hugging Face 등이 참여하는 위원회가 조율합니다. 빠른 프로젝트를 오래가는 표준으로 만들려는 움직임입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://huggingface.co/blog/openenv-agentic-rl">Hugging Face OpenEnv</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 작업 검증 표면</span>
+        </div>
+        <div>
+          <h2>GitHub Copilot 앱, 에이전트 작업을 “보이는 캔버스”로 옮기다</h2>
+          <div class="brief-body">
+            <p>GitHub는 Copilot 앱 기술 프리뷰를 기존 유료 Copilot 고객 전체로 넓히고, 에이전트 작업을 검토 가능한 캔버스 위에 올리는 방향을 공개했습니다. 코딩 에이전트의 다음 UX는 대화창이 아니라 상태를 보고 조정하는 작업면입니다.</p>
+            <div class="keyword-cards" aria-label="GitHub Copilot app 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">유료 고객 전체 프리뷰</strong>
+                <p>2026년 6월 2일 기준 Copilot Pro, Pro+, Business, Enterprise 고객은 Windows, macOS, Linux용 앱을 받을 수 있습니다. Free와 신규 가입자 접근은 이후 열릴 예정입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">캔버스가 작업 상태</strong>
+                <p>캔버스는 계획, PR, 브라우저 세션, 터미널, 체크리스트 같은 작업 객체를 구조화된 표면으로 보여줍니다. 사용자는 대화 로그를 뒤지는 대신 상태를 직접 편집하고 승인할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">격리된 병렬 세션</strong>
+                <p>앱은 여러 에이전트 세션을 각각 다른 worktree와 브랜치에서 실행할 수 있습니다. 실험과 실제 변경을 분리하는 습관이 쉬워집니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">검증까지 한 화면</strong>
+                <p>통합 터미널과 브라우저에서 계획, diff, 동작을 확인하는 흐름이 강조됐습니다. 바이브 코딩 사용자에게는 “돌아가는지 확인”이 작업의 일부로 들어옵니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/changelog/2026-06-02-expanded-technical-preview-availability-for-the-github-copilot-app/">GitHub Copilot app changelog</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 터미널 협업</span>
+        </div>
+        <div>
+          <h2>Copilot CLI, 터미널 안에서 리뷰와 예약 작업을 품다</h2>
+          <div class="brief-body">
+            <p>GitHub Copilot CLI 업데이트는 터미널을 단순 명령 입력창에서 이슈, PR, 비평, 음성 입력을 담는 작업 공간으로 바꾸는 방향입니다. 초보자에게도 CLI가 “외워야 하는 명령어”보다 “같이 일하는 콘솔”에 가까워집니다.</p>
+            <div class="keyword-cards" aria-label="GitHub Copilot CLI 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">탭으로 GitHub 문맥 보기</strong>
+                <p>실험적 터미널 인터페이스는 세션, 이슈, Pull request, Gist 탭을 제공합니다. 저장소 문맥을 보기 위해 브라우저와 터미널을 오가는 횟수가 줄어듭니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Rubber duck 비평</strong>
+                <p>Rubber duck은 현재 계획, 설계, 구현, 테스트를 보고 빈틈과 설계 문제를 지적하는 내장 비평 에이전트입니다. 혼자 작업할 때도 두 번째 시선을 붙이는 방식입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">음성과 예약 입력</strong>
+                <p>음성 입력은 일반 제공되고, /every와 /after 예약 프롬프트는 실험 기능으로 제공됩니다. 반복 점검이나 나중에 돌릴 작업을 CLI 안에 남기는 패턴입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">접근성도 도구 품질</strong>
+                <p>새 인터페이스는 색상 모드, 화면 읽기 지원, 좁은 터미널 대응을 강조합니다. 에이전트 도구도 결과만큼 작업 환경의 안정성이 중요해졌습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/changelog/2026-06-02-copilot-cli-improved-ui-rubber-duck-prompt-scheduling-and-voice-input/">GitHub Copilot CLI changelog</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 에이전트 친화 도구</span>
+        </div>
+        <div>
+          <h2>Hugging Face hf CLI, 사람과 에이전트가 다른 출력을 받게 하다</h2>
+          <div class="brief-body">
+            <p>Hugging Face는 공식 `hf` CLI를 코딩 에이전트가 쓰기 좋은 출력으로 재설계했다고 설명했습니다. 앞으로 좋은 개발 도구는 사람에게 보기 좋고, 에이전트에게는 덜 모호하고 토큰을 덜 쓰는 두 얼굴을 가져야 합니다.</p>
+            <div class="keyword-cards" aria-label="Hugging Face hf CLI 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">에이전트 환경변수 감지</strong>
+                <p>`hf` CLI와 Python SDK는 Claude Code, Codex, Cursor, Gemini, AI_AGENT 같은 환경 신호를 읽어 에이전트 사용을 감지합니다. 요청에는 agent 이름을 담은 user-agent도 붙습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">최대 6배 토큰 절약</strong>
+                <p>Hugging Face는 복잡한 다단계 작업에서 CLI 없이 curl이나 Python SDK를 직접 조립하는 기준선이 최대 6배 많은 토큰을 썼다고 밝혔습니다. 도구 출력 설계가 비용 문제가 됐습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">색보다 구조</strong>
+                <p>사람에게는 색상, 표, 진행 표시가 좋지만 에이전트에게는 ANSI 없는 전체 값, 잘리지 않는 결과, 조밀한 구조가 더 유리합니다. 같은 명령도 사용자에 따라 다른 표현이 필요합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">프롬프트 없는 실행</strong>
+                <p>에이전트는 CLI 질문에 자연스럽게 답하기 어렵고 타임아웃 후 재실행하기도 합니다. 에이전트 친화 CLI는 상호작용보다 명시적 인자와 예측 가능한 결과가 중요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://huggingface.co/blog/hf-cli-for-agents">Hugging Face hf CLI</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: GitHub 주간 신호</span>
+        </div>
+        <div>
+          <h2>Headroom, 에이전트 컨텍스트 압축이 GitHub 주간 1위로 떠오르다</h2>
+          <div class="brief-body">
+            <p>이번 주 GitHub Trending의 AI 관련 프로젝트 중 가장 큰 신호는 Headroom이었습니다. 도구 출력, 로그, 파일, RAG 조각이 LLM에 들어가기 전에 압축하는 레이어를 내세우며 “에이전트가 더 많은 맥락을 더 싸게 다루는 방법”이 개발자 관심사로 올라왔습니다.</p>
+            <div class="keyword-cards" aria-label="Headroom 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">14,272 stars this week</strong>
+                <p>GitHub Trending 주간 페이지에서 Headroom은 2026년 6월 9일 확인 기준 14,272 stars this week로 표시됐습니다. 인기 신호는 품질 보증이 아니라 개발자들이 지금 테스트해보는 문제를 보여주는 지표입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">LLM 앞단 압축층</strong>
+                <p>Headroom은 에이전트가 읽는 로그, 파일, 검색 조각, 대화 기록을 LLM에 보내기 전에 줄이는 도구입니다. 컨텍스트 창이 커져도 비용과 노이즈를 관리해야 한다는 흐름을 보여줍니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Library, Proxy, MCP</strong>
+                <p>저장소는 라이브러리, 프록시, agent wrap, MCP 서버 같은 사용 방식을 제시합니다. 특정 앱 하나보다 에이전트 도구 체인 중간층이 되는 쪽을 겨냥합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">로컬 우선, 원문 보존</strong>
+                <p>README는 로컬 우선 처리와 원문으로 되돌릴 수 있는 압축을 강조합니다. 민감한 프로젝트 문맥을 다루는 에이전트 도구에서는 성능만큼 통제와 복원 가능성이 중요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.com/trending?since=weekly">GitHub Trending weekly</a>
+            <a href="https://github.com/chopratejas/headroom">Headroom repository</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge green">04 Research</span>
+          <span class="signal">선정 이유: 에이전트 실행 조건</span>
+        </div>
+        <div>
+          <h2>이번 주 연구 노트: 에이전트는 어떻게 나눠 일하고, 스킬을 쓰며, 위험을 만든다</h2>
+          <div class="brief-body">
+            <p>이번 주 논문들은 모델 자체보다 에이전트가 실제 환경에서 일하는 방식에 초점을 맞춥니다. 병렬 컴퓨터 사용, 프레임워크 평가, 스킬 표준화, 보안 위험을 함께 보면 “좋은 에이전트”의 기준이 답변 품질에서 운영 가능성으로 이동하고 있습니다.</p>
+          </div>
+
+          <div class="keyword-cards" aria-label="이번 주 연구 노트 핵심 키워드">
+            <div class="keyword-card">
+              <strong class="keyword-title">Multi-Agent Computer Use: 일을 DAG로 쪼갬</strong>
+              <p>관리자 모델이 컴퓨터 사용 과제를 DAG로 분해하고 병렬 하위 에이전트에 맡기는 방식입니다. 데스크톱과 웹 벤치마크에서 단일 에이전트보다 나은 결과를 보고해 장기 작업의 병렬화 가능성을 보여줍니다. <a href="https://arxiv.org/abs/2606.01533">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">ADK Arena: 프레임워크도 성능 변수</strong>
+              <p>51개 Python ADK를 같은 LLM 개발자로 평가해 프레임워크 선택이 비용과 성공률에 미치는 영향을 비교했습니다. 에이전트 개발도 SDK의 사용성, 문서, 검증 루프가 성능 일부가 됩니다. <a href="https://arxiv.org/abs/2606.05548">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">MMG2Skill: 웹 가이드를 실행 스킬로</strong>
+              <p>웹의 절차형 가이드를 에이전트가 쓸 수 있는 편집 가능한 스킬로 바꾸고 실패 궤적에서 다시 고치는 프레임워크입니다. 사람용 지식이 에이전트용 절차 지식으로 변환되는 흐름을 봐야 합니다. <a href="https://arxiv.org/abs/2606.01993">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">AIP: 스킬을 실행 그래프로 관리</strong>
+              <p>Agent Instruction Protocol은 스킬을 단계, 입력과 출력, 권한을 가진 실행 그래프로 표현합니다. 스킬이 많아질수록 텍스트 지침보다 검증 가능한 구조가 필요해집니다. <a href="https://arxiv.org/abs/2606.04781">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">Adaptive AI Worms: 자율성은 공격면도 키움</strong>
+              <p>격리된 실험에서 로컬 오픈 모델 기반 에이전트가 표적별 전략을 만들어 전파되는 위험을 보였습니다. 에이전트 보안은 중앙 API 안전장치만으로 충분하지 않다는 경고입니다. <a href="https://arxiv.org/abs/2606.03811">arXiv</a></p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="source-table">
+      <h2 class="section-title">Source List</h2>
+      <ul class="source-grid">
+        <li><a href="https://openai.com/index/chatgpt-memory-dreaming/">OpenAI: Dreaming memory</a> - ChatGPT memory synthesis, freshness, rollout, compute efficiency.</li>
+        <li><a href="https://openai.com/index/codex-for-knowledge-work/">OpenAI: Codex for knowledge work</a> - Codex usage expansion, knowledge-worker adoption, parallel tasks.</li>
+        <li><a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">OpenAI: Codex report PDF</a> - Source report linked from the Codex knowledge-work announcement.</li>
+        <li><a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/">Google: AI updates May 2026</a> - Gemini 3.5, Gemini Omni, Project Genie, proactive product updates.</li>
+        <li><a href="https://blogs.microsoft.com/blog/2026/06/02/ai-alone-wont-change-your-business-the-system-running-it-will/">Microsoft: agentic enterprise system</a> - Integrated agent stack, model flexibility, governance, feedback loops.</li>
+        <li><a href="https://huggingface.co/blog/openenv-agentic-rl">Hugging Face: OpenEnv</a> - Open agentic RL environment interface, governance, MCP and packaging direction.</li>
+        <li><a href="https://github.blog/changelog/2026-06-02-expanded-technical-preview-availability-for-the-github-copilot-app/">GitHub: Copilot app preview</a> - Expanded availability, canvases, isolated sessions, verification surface.</li>
+        <li><a href="https://github.blog/changelog/2026-06-02-copilot-cli-improved-ui-rubber-duck-prompt-scheduling-and-voice-input/">GitHub: Copilot CLI update</a> - Terminal UI, rubber duck, prompt scheduling, voice input, accessibility.</li>
+        <li><a href="https://huggingface.co/blog/hf-cli-for-agents">Hugging Face: hf CLI for agents</a> - Agent-aware CLI output, token use, agent traffic signals.</li>
+        <li><a href="https://github.com/trending?since=weekly">GitHub Trending: weekly</a> - Observed weekly developer-interest signal for Headroom on 2026-06-09.</li>
+        <li><a href="https://github.com/chopratejas/headroom">GitHub: Headroom</a> - Context compression layer for AI agents, logs, files, RAG chunks, proxy, MCP server.</li>
+        <li><a href="https://arxiv.org/abs/2606.01533">Multi-Agent Computer Use</a> - Parallel computer-use agents and DAG-based task decomposition.</li>
+        <li><a href="https://arxiv.org/abs/2606.05548">ADK Arena</a> - Automated evaluation of agent development kits through LLM-as-a-developer.</li>
+        <li><a href="https://arxiv.org/abs/2606.01993">MMG2Skill</a> - Distilling in-the-wild procedural guides into self-evolving agent skills.</li>
+        <li><a href="https://arxiv.org/abs/2606.04781">AIP</a> - Graph representation for learning and governing agent skills.</li>
+        <li><a href="https://arxiv.org/abs/2606.03811">Adaptive AI Worms</a> - Security research on autonomous agent-driven propagation risks.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
