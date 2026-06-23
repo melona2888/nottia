@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nottia Weekly Newsletter - 2026-06-23</title>
+  <style>
+    :root {
+      --ink: #151718;
+      --sub: #5d646b;
+      --line: #d8dde2;
+      --bg: #f6f7f4;
+      --panel: #ffffff;
+      --blue: #255e7c;
+      --green: #286f58;
+      --rust: #8a5636;
+      --soft-blue: #e8f1f5;
+      --soft-green: #e9f3ee;
+      --soft-rust: #f4ece5;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37, 94, 124, 0.28);
+    }
+
+    a:hover { border-bottom-color: var(--blue); }
+
+    .wrap {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 30px 0 58px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+    }
+
+    .topbar strong { color: var(--ink); }
+    .hero { padding: 34px 0 28px; border-bottom: 1px solid var(--line); }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 780px;
+      color: #343a40;
+      font-size: 17px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .digest {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .glance, .editorial {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .glance ol { margin: 0; padding-left: 20px; }
+    .glance li + li { margin-top: 10px; }
+    .editorial p { margin: 0; color: #353b41; }
+    .brief-list { display: grid; gap: 14px; padding: 24px 0; }
+
+    .brief {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .label { display: grid; align-content: start; gap: 8px; }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 25px;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: #263036;
+      background: var(--soft-blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge.green { background: var(--soft-green); color: var(--green); }
+    .badge.rust { background: var(--soft-rust); color: var(--rust); }
+    .signal { color: var(--sub); font-size: 12px; line-height: 1.45; }
+    .brief h2 { margin: 0; font-size: 24px; line-height: 1.28; }
+    .brief-body p, .brief p { margin: 10px 0 0; color: #363d43; font-size: 15px; }
+
+    .keyword-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .keyword-card {
+      min-height: 118px;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+    }
+
+    .keyword-title {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .keyword-card p { margin: 0; color: #363d43; font-size: 14px; line-height: 1.58; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    .links a {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 4px 10px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: #25313a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .source-table { margin-top: 18px; padding-top: 20px; border-top: 3px solid var(--ink); }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .source-grid li { padding: 0 0 10px; border-bottom: 1px solid var(--line); }
+
+    @media (max-width: 820px) {
+      .digest, .brief { grid-template-columns: 1fr; }
+      .source-grid, .keyword-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <span><a href="../"><strong>Nottia Weekly Newsletter</strong></a> / 2026년 6월 23일</span>
+      <span>2026-06-17 - 2026-06-23</span>
+    </div>
+
+    <header class="hero">
+      <h1>AI 신제품이 작업 화면 안으로 쏟아져 들어온 주</h1>
+      <p class="subtitle">Claude Design부터 Figma 웹 캡처, SpaceX의 Cursor 인수 계약, ChatGPT 예약 작업, GLM-5.2까지—이번 호는 하나의 주제 대신 바로 써보고 싶은 핵심 업데이트를 넉넉하게 담았습니다.</p>
+    </header>
+
+    <section class="digest">
+      <div class="glance">
+        <h2 class="section-title">This Week in 4 Lines</h2>
+        <ol>
+          <li>Claude Design과 Figma는 이미 존재하는 코드와 웹 페이지를 디자인 출발점으로 되돌리는 기능을 강화했습니다.</li>
+          <li>Claude Code Artifacts는 에이전트의 진행 상황을 팀이 같은 링크에서 보는 살아 있는 작업물로 바꿨습니다.</li>
+          <li>ChatGPT Scheduled Tasks와 Codex Record &amp; Replay는 반복 업무를 예약하거나 한 번 보여주고 재사용하는 흐름을 열었습니다.</li>
+          <li>GLM-5.2의 100만 토큰 문맥과 SpaceX의 Cursor 인수 계약은 모델 경쟁이 장기 실행과 개발자 유통망으로 번졌음을 보여줍니다.</li>
+        </ol>
+      </div>
+      <div class="editorial">
+        <h2 class="section-title">Editorial Note</h2>
+        <p>이번 주는 억지로 하나의 거대한 서사를 만들 필요가 없습니다. 다만 여러 발표를 나란히 놓으면 공통된 움직임은 보입니다. AI가 새 채팅창을 하나 더 만드는 대신 디자인 캔버스, 코드 리뷰, 포토샵, 일정표, 개발 문서처럼 우리가 이미 일하는 표면에 들어오기 시작했습니다.</p>
+      </div>
+    </section>
+
+    <section class="brief-list" aria-label="Briefing list">
+      <article class="brief">
+        <div class="label">
+          <span class="badge rust">01 Icebreaker</span>
+          <span class="signal">선정 이유: 비개발자 체감</span>
+        </div>
+        <div>
+          <h2>Figma, 살아 있는 웹 페이지를 편집 가능한 레이어로 가져온다</h2>
+          <div class="brief-body">
+            <p>Figma의 Chrome 확장 프로그램은 웹 페이지 전체나 특정 요소를 캡처해 단순 스크린샷이 아닌 구조화된 디자인 레이어로 옮깁니다. 운영 중인 화면을 다시 만들지 않고 곧바로 개선안과 프로토타입의 출발점으로 삼을 수 있습니다.</p>
+            <div class="keyword-cards" aria-label="Figma 웹 캡처 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">스크린샷 대신 구조화 레이어</strong>
+                <p>페이지 전체 또는 특정 요소를 캡처해 Figma 캔버스의 디자인 레이어로 가져옵니다. 텍스트와 요소를 분리해 다시 만질 수 있다는 점이 핵심입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">현재 제품에서 바로 리디자인</strong>
+                <p>운영 화면을 기준으로 색, 배치, 문구를 바꾸며 개선안을 만들 수 있습니다. 오래된 디자인 파일을 찾는 시간도 줄어듭니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Figma Make로 바로 연결</strong>
+                <p>캡처한 디자인을 Figma Make에 보내 작동하는 프로토타입의 출발점으로 쓸 수 있습니다. 캡처→편집→동작 확인이 한 흐름이 됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">복제보다 출처와 권한 확인</strong>
+                <p>다른 사이트의 요소도 가져올 수 있는 만큼 저작권, 브랜드 자산, 비공개 화면을 다루는 기준은 사용자가 따로 지켜야 합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://www.figma.com/downloads/chrome-extension/">Figma Chrome extension</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 디자인·코드 연결</span>
+        </div>
+        <div>
+          <h2>Claude Design, 예쁜 시안보다 ‘우리 제품다운 결과’에 가까워졌다</h2>
+          <div class="brief-body">
+            <p>Claude Design의 이번 업데이트는 디자인 시스템 준수, 직접 편집, Claude Code와의 양방향 이동에 집중했습니다. 생성형 디자인의 약점이던 브랜드 일관성과 구현 단계의 단절을 정면으로 다룹니다.</p>
+            <div class="keyword-cards" aria-label="Claude Design 업데이트 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">디자인 시스템을 먼저 읽음</strong>
+                <p>GitHub 저장소, 디자인 파일, 원본 업로드에서 하나 이상의 디자인 시스템을 가져옵니다. Claude가 결과를 시스템과 대조하고 수정한 뒤 보여줍니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">/design과 /design-sync</strong>
+                <p>Claude Code 터미널에서 디자인 프로젝트를 만들고 동기화하거나, 완성된 디자인을 코드 구현으로 넘길 수 있습니다. 스크린샷만 보고 다시 추측하는 단계가 줄어듭니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">조직 표준 잠금</strong>
+                <p>관리자는 승인된 표준 디자인 시스템을 정하고 편집을 제한할 수 있습니다. 개인의 프롬프트 취향보다 조직의 브랜드 규칙을 앞세우는 기능입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Beta, 조직 외 공유는 제한</strong>
+                <p>Pro·Max·Team·Enterprise 플랜에서 베타로 제공됩니다. Enterprise는 기본 비활성화이며 작업물 공유는 조직 내부로 제한됩니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://claude.com/blog/claude-design-stays-on-brand-for-daily-work">Claude: Design update</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 팀 협업 변화</span>
+        </div>
+        <div>
+          <h2>Claude Code Artifacts, 작업 과정을 ‘같은 링크’로 공유한다</h2>
+          <div class="brief-body">
+            <p>Claude Code는 조사와 구현 진행 상황을 PR 워크스루, 시스템 설명, 대시보드, 릴리스 체크리스트 같은 인터랙티브 웹 페이지로 발행할 수 있게 됐습니다. 에이전트가 다시 발행하면 같은 URL의 내용이 갱신됩니다.</p>
+            <div class="keyword-cards" aria-label="Claude Code Artifacts 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">세션 맥락이 바로 설명 페이지로</strong>
+                <p>코드베이스, 연결된 도구, 대화 맥락을 묶어 별도 대시보드 인프라 없이 작업 설명 페이지를 만듭니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">URL은 유지, 버전은 쌓임</strong>
+                <p>업데이트를 발행할 때 열린 페이지가 같은 주소에서 새로고침되고 버전 이력이 남습니다. 진행 보고와 최종 산출물이 분리되지 않습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">리뷰 가능한 에이전트 작업</strong>
+                <p>에러 타임라인, 의심 커밋, 테스트 결과처럼 작업 중 근거를 시각적으로 보여줄 수 있어 결과만 던지는 에이전트보다 검토가 쉬워집니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">공개 링크는 아님</strong>
+                <p>Team·Enterprise 조직 대상 베타이며 인증된 조직 구성원만 볼 수 있습니다. 외부 고객이나 공개 웹에 공유하는 기능은 아닙니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://claude.com/blog/artifacts-in-claude-code">Claude Code Artifacts</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 크리에이티브 도구 내장</span>
+        </div>
+        <div>
+          <h2>Higgsfield, Photoshop 안에 생성·레이어 분해·카메라 앵글을 넣었다</h2>
+          <div class="brief-body">
+            <p>Higgsfield의 Photoshop 플러그인은 웹에서 생성하고 파일을 다시 내려받는 왕복을 줄입니다. 실시간 AI 편집, 제품 목업, 평면 이미지 레이어 분해, 새로운 카메라 구도 생성 결과가 Photoshop 레이어로 돌아옵니다.</p>
+            <div class="keyword-cards" aria-label="Higgsfield Photoshop 플러그인 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">평면 이미지를 다시 레이어로</strong>
+                <p>Layer Decompose는 한 장의 이미지에서 피사체, 배경, 세부 요소를 분리해 이동·보정 가능한 레이어로 돌려줍니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">한 장면에서 여러 쇼트</strong>
+                <p>Shots는 같은 장면을 유지하며 와이드, 클로즈업, 다른 시점의 이미지를 만듭니다. 스토리보드와 광고 시안 제작에 직접 연결됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">생성 결과도 편집 레이어</strong>
+                <p>결과가 새 편집 레이어로 돌아와 마스크, 블렌딩, 보정을 이어갈 수 있습니다. 기존 Photoshop 작업 방식을 버릴 필요가 없습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Photoshop 2024+·온라인 필수</strong>
+                <p>macOS와 Windows의 Photoshop 2024 이상을 지원합니다. 생성은 Higgsfield 클라우드 GPU에서 처리되므로 계정과 인터넷 연결이 필요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://higgsfield.ai/plugins/photoshop">Higgsfield for Photoshop</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 일상 자동화</span>
+        </div>
+        <div>
+          <h2>ChatGPT Scheduled Tasks, 알림을 넘어 ‘변화가 있을 때만 보고’한다</h2>
+          <div class="brief-body">
+            <p>ChatGPT 예약 작업은 사이드바의 전용 Scheduled 페이지, 시간대 범위 예약, 웹과 연결 앱을 확인하는 모니터링 작업을 추가했습니다. OpenAI는 Pulse의 선제적 업데이트 역할도 이 기능으로 옮깁니다.</p>
+            <div class="keyword-cards" aria-label="ChatGPT Scheduled Tasks 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">예약 작업 전용 관리 화면</strong>
+                <p>활성 작업, 다음 실행 시각을 한곳에서 보고 일시정지·재개·수정·삭제할 수 있습니다. 채팅 속에 흩어진 예약을 찾는 문제가 줄어듭니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">웹·연결 앱 변화 감시</strong>
+                <p>모니터링 작업은 웹과 연결 앱을 확인하고 보고할 변화가 있을 때만 알립니다. 매일 같은 내용의 알림보다 조건형 자동화에 가깝습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">정확한 시각 또는 넓은 시간대</strong>
+                <p>특정 시각뿐 아니라 아침·오후·저녁 같은 범위로도 예약할 수 있습니다. 일정 자동화의 표현이 조금 더 자연스러워졌습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">시간당 1회가 상한</strong>
+                <p>Plus·Pro·Business·Enterprise에 순차 배포되며 활성 작업 한도는 플랜마다 다릅니다. 작업은 시간당 1회를 넘겨 실행할 수 없습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: AI 코딩 시장 재편</span>
+        </div>
+        <div>
+          <h2>SpaceX, Cursor를 품는다—모델 다음 전장은 개발자 유통망</h2>
+          <div class="brief-body">
+            <p>SpaceX는 Cursor를 만드는 Anysphere와 600억 달러 규모의 확정적 합병계약을 체결했습니다. 거래가 끝나면 Anysphere는 SpaceX의 완전 자회사가 됩니다. 컴퓨트 인프라와 모델을 가진 회사가 개발자가 매일 쓰는 코딩 인터페이스까지 직접 확보하려는 움직임입니다.</p>
+            <div class="keyword-cards" aria-label="SpaceX Cursor 인수 계약 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">아직 합병 완료는 아님</strong>
+                <p>6월 16일 계약을 체결했고 규제 승인 등 종결 조건이 남아 있습니다. SpaceX는 2026년 3분기 거래 완료를 예상합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">600억 달러 전액 주식 거래</strong>
+                <p>SpaceX의 자회사 X67이 Anysphere에 합병되고 Anysphere가 존속하는 구조입니다. Cursor 주식은 600억 달러의 평가가치를 기준으로 SpaceX Class A 주식으로 전환됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Cursor와 Grok Build에 공동 모델</strong>
+                <p>SpaceX는 SpaceXAI와 Cursor가 최근 몇 달간 공동으로 모델을 훈련했으며 이를 Cursor와 Grok Build에 곧 공개할 예정이라고 밝혔습니다. 인수의 첫 제품 효과가 어디서 나타날지 보여주는 대목입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">독립성과 데이터 경계가 관건</strong>
+                <p>Cursor가 여러 모델을 선택하는 현재 전략을 얼마나 유지할지, 기업 코드와 사용 데이터가 어떤 경계에서 처리될지는 아직 구체적으로 발표되지 않았습니다. 사용자 데이터가 곧바로 모델 학습에 쓰인다고 단정해서는 안 됩니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026043411/spaceexplorationtechnologi.htm">SpaceX SEC filing</a>
+            <a href="https://x.com/SpaceX/status/2066873915717136548">SpaceX announcement</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 노코드형 스킬 제작</span>
+        </div>
+        <div>
+          <h2>Codex Record &amp; Replay, 화면으로 한 번 보여주면 스킬 초안을 만든다</h2>
+          <div class="brief-body">
+            <p>말로 길게 설명하기 어려운 반복 작업을 직접 시연하면 Codex가 필요한 입력, 실행 단계, 검증 방법을 담은 재사용 스킬을 작성합니다. 비용 처리, 이슈 생성, 영상 게시, 정기 보고서 다운로드 같은 작업이 대표 예시입니다.</p>
+            <div class="keyword-cards" aria-label="Codex Record and Replay 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">설명보다 시연</strong>
+                <p>사용자가 Mac에서 작업을 수행하는 동안 필요한 동작과 창 내용을 관찰합니다. 숨은 클릭 순서와 개인 선호를 프롬프트보다 쉽게 전달할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">녹화 후 SKILL 초안</strong>
+                <p>녹화를 멈추면 Codex가 트리거, 입력, 단계, 검증 기준을 정리합니다. 사용자는 초안을 검토하고 예외와 명명 규칙을 보완할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Computer Use로 재실행</strong>
+                <p>새 스레드에서 생성된 스킬을 부르면 Computer Use, 브라우저 동작, 설치된 플러그인을 조합해 같은 흐름을 반복합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">민감정보는 녹화하지 않기</strong>
+                <p>현재 macOS와 Computer Use가 필요하며 EU·영국·스위스는 초기 제공에서 제외됩니다. 녹화에는 비밀키나 민감 데이터를 넣지 않는 것이 원칙입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://developers.openai.com/codex/record-and-replay">OpenAI: Record &amp; Replay</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 개발 문서 UX</span>
+        </div>
+        <div>
+          <h2>OpenAI 개발 문서, 검색창 옆에 Docs Agent를 세웠다</h2>
+          <div class="brief-body">
+            <p>OpenAI Developers 사이트에는 문서 전체를 대상으로 질문하는 Docs Agent가 들어왔습니다. 새 API보다 작아 보이는 변화지만, 복잡해진 제품군에서 사용자가 문서 구조를 먼저 배우지 않아도 목적에서 관련 페이지로 이동하게 만드는 인터페이스입니다.</p>
+            <div class="keyword-cards" aria-label="OpenAI Docs Agent 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">키워드보다 목적을 질문</strong>
+                <p>정확한 API 이름을 모르더라도 하려는 일을 설명하며 출발할 수 있습니다. 문서 검색이 메뉴 탐색에서 대화형 안내로 바뀝니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">답보다 원문 위치가 중요</strong>
+                <p>개발 문서 에이전트의 가치는 요약 자체보다 관련 공식 가이드와 참조 위치로 빠르게 연결하는 데 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">문서가 제품 인터페이스가 됨</strong>
+                <p>API, Codex, Apps SDK처럼 갈라진 제품군을 한 질문면으로 묶습니다. 앞으로 개발자 포털도 정적 목차보다 에이전트형 진입점이 중요해질 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">최종 확인은 문서 본문</strong>
+                <p>에이전트 답변은 길잡이입니다. 버전, 지역, 가격, 제한처럼 배포에 영향을 주는 내용은 연결된 공식 문서에서 다시 확인해야 합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://developers.openai.com/">OpenAI Developers</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 추가 주간 신호</span>
+        </div>
+        <div>
+          <h2>GitHub Copilot 코드 리뷰, 이제 루트 AGENTS.md를 읽는다</h2>
+          <div class="brief-body">
+            <p>Copilot 코드 리뷰가 저장소 루트의 AGENTS.md를 자동으로 읽고 팀의 관례와 기대를 리뷰 피드백에 반영합니다. 에이전트 지침 파일이 코딩 단계뿐 아니라 리뷰 단계의 공통 계약으로 확장되는 변화입니다.</p>
+            <div class="keyword-cards" aria-label="GitHub Copilot AGENTS.md 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">리뷰 기준을 저장소에 둠</strong>
+                <p>리뷰어마다 반복해서 설명하던 규칙을 루트 AGENTS.md에 남길 수 있습니다. Copilot은 관련 지침을 읽고 피드백 생성에 사용합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">기존 파일도 자동 반영</strong>
+                <p>이미 AGENTS.md를 쓰는 저장소는 별도 연결 작업 없이 코드 리뷰 맥락으로 활용됩니다. 기능은 일반 제공 상태입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">규칙의 품질이 리뷰 품질</strong>
+                <p>모호하거나 오래된 지침도 그대로 영향을 줄 수 있습니다. 팀 규칙을 테스트 가능하고 충돌 없이 유지하는 일이 더 중요해집니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Draft PR에도 더 쉽게 요청</strong>
+                <p>초안 PR의 reviewer picker에서 Copilot을 바로 요청할 수 있게 UI도 다듬었습니다. 공개 전 첫 검토를 받는 흐름이 짧아졌습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/">GitHub Changelog</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 오픈 모델 핵심 발표</span>
+        </div>
+        <div>
+          <h2>GLM-5.2, 100만 토큰 문맥으로 ‘오래 일하는 모델’을 겨냥한다</h2>
+          <div class="brief-body">
+            <p>Z.ai의 새 플래그십 GLM-5.2는 단순히 입력창을 키우는 대신 대규모 구현, 자동화 연구, 성능 최적화, 복잡한 디버깅처럼 긴 에이전트 궤적을 안정적으로 이어가는 데 초점을 맞췄습니다. 오픈 웨이트 모델이 장기 실행 코딩 경쟁의 한가운데로 들어왔다는 점이 이번 발표의 핵심입니다.</p>
+            <div class="keyword-cards" aria-label="GLM-5.2 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">100만 토큰 문맥</strong>
+                <p>GLM-5.1의 20만 토큰에서 100만 토큰으로 확장했습니다. Z.ai는 긴 코딩 에이전트 궤적을 별도로 학습해 문맥의 크기보다 장시간 작업의 유지력을 겨냥했다고 설명합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">MIT 오픈 웨이트</strong>
+                <p>가중치를 Hugging Face와 ModelScope에 공개했고 MIT 라이선스를 적용했습니다. Transformers, vLLM, SGLang 등으로 로컬 서빙할 수 있어 API 전용 모델과 다른 선택지를 만듭니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">노력 수준을 선택</strong>
+                <p>High와 Max 등 사고 노력 수준으로 성능·지연·비용을 조절할 수 있습니다. Coding Plan에서는 Claude Code, ZCode, OpenCode 같은 코딩 에이전트에 연결할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">벤치마크는 조건과 함께</strong>
+                <p>공개 발표는 장기 코딩 벤치마크에서 강한 결과를 제시하지만 제공사 측 평가입니다. 실제 도입에서는 작업별 반복 실행, 100만 토큰의 서빙 자원, 피크 시간대 쿼터 비용을 함께 확인해야 합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links"><a href="https://z.ai/blog/glm-5.2">Z.ai: GLM-5.2</a></div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge green">04 Research</span>
+          <span class="signal">선정 이유: 제품 뒤의 연구 흐름</span>
+        </div>
+        <div>
+          <h2>이번 주 연구 노트: 스킬을 만들고, 고치고, 검증하는 법</h2>
+          <div class="brief-body">
+            <p>Record &amp; Replay 같은 제품 기능 뒤에서는 스킬을 한 번 만드는 것보다 안전하게 개선하고 필요한 순간에만 불러오는 방법이 연구 주제로 빠르게 커지고 있습니다.</p>
+          </div>
+          <div class="keyword-cards" aria-label="이번 주 연구 노트 핵심 키워드">
+            <div class="keyword-card">
+              <strong class="keyword-title">SkillAudit: 스킬 유무를 같은 작업에서 비교</strong>
+              <p>정답 데이터 없이도 같은 작업을 스킬 적용 전후로 실행해 행동 차이를 감사하고, 해로운 수정은 되돌리는 방식을 제안합니다. <a href="https://arxiv.org/abs/2606.14239">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">SkillCAT: 필요한 하위 스킬만 로딩</strong>
+              <p>성공·실패 궤적을 비교해 스킬을 고치고, 전체 문서 대신 현재 작업과 관련된 능력 노드만 불러오는 구조를 제안합니다. <a href="https://arxiv.org/abs/2606.13317">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">AIP: 자유문장을 실행 그래프로</strong>
+              <p>스킬을 타입이 있는 입출력과 단계 노드의 그래프로 컴파일해 실행 신뢰성과 부분별 테스트 가능성을 높이려는 접근입니다. <a href="https://arxiv.org/abs/2606.04781">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">Agents-K1: 논문 전체를 에이전트 지식으로</strong>
+              <p>초록만 검색하지 않고 본문의 주장, 근거, 그림, 방법 계보를 지식 그래프로 바꿔 여러 문서를 넘나드는 연구 에이전트를 지향합니다. <a href="https://arxiv.org/abs/2606.13669">arXiv</a></p>
+            </div>
+            <div class="keyword-card">
+              <strong class="keyword-title">LivingScreen: 움직이는 화면은 아직 어렵다</strong>
+              <p>짧은 영상처럼 계속 변하는 화면에서는 무엇을 얼마나 오래 볼지 결정해야 합니다. 현재 GUI 에이전트가 사람의 비용·정확도에 못 미친다는 결과를 보여줍니다. <a href="https://arxiv.org/abs/2606.04701">arXiv</a></p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="source-table">
+      <h2 class="section-title">Source List</h2>
+      <ul class="source-grid">
+        <li><a href="https://www.figma.com/downloads/chrome-extension/">Figma Chrome extension</a> - 웹 페이지와 특정 요소를 구조화된 Figma 레이어로 캡처.</li>
+        <li><a href="https://claude.com/blog/claude-design-stays-on-brand-for-daily-work">Claude Design update</a> - 디자인 시스템, Claude Code 연동, 제공 조건.</li>
+        <li><a href="https://claude.com/blog/artifacts-in-claude-code">Claude Code Artifacts</a> - 라이브 작업 페이지와 조직 내부 공유 조건.</li>
+        <li><a href="https://higgsfield.ai/plugins/photoshop">Higgsfield for Photoshop</a> - Photoshop 플러그인 기능과 시스템 조건.</li>
+        <li><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes</a> - Scheduled Tasks 개편과 Record &amp; Replay 발표.</li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026043411/spaceexplorationtechnologi.htm">SpaceX SEC filing</a> - Anysphere 합병계약의 구조, 600억 달러 평가, 종결 조건과 예상 시점.</li>
+        <li><a href="https://x.com/SpaceX/status/2066873915717136548">SpaceX announcement</a> - Cursor 공동 모델과 제품 공개 계획.</li>
+        <li><a href="https://developers.openai.com/codex/record-and-replay">Codex Record &amp; Replay</a> - 녹화, 스킬 생성, 재실행, 보안 주의사항.</li>
+        <li><a href="https://developers.openai.com/">OpenAI Developers</a> - 개발자 문서 사이트의 Docs Agent 진입점.</li>
+        <li><a href="https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements/">GitHub: AGENTS.md in code review</a> - Copilot 코드 리뷰의 저장소 지침 지원.</li>
+        <li><a href="https://z.ai/blog/glm-5.2">Z.ai: GLM-5.2</a> - 100만 토큰 문맥, 오픈 웨이트, 장기 실행 코딩 평가와 사용 조건.</li>
+        <li><a href="https://arxiv.org/abs/2606.14239">arXiv: SkillAudit</a> - paired trajectory auditing 기반 스킬 개선.</li>
+        <li><a href="https://arxiv.org/abs/2606.13317">arXiv: SkillCAT</a> - 대조 평가와 topology-aware skill loading.</li>
+        <li><a href="https://arxiv.org/abs/2606.04781">arXiv: AIP</a> - 에이전트 스킬의 실행 그래프 표현.</li>
+        <li><a href="https://arxiv.org/abs/2606.13669">arXiv: Agents-K1</a> - 논문 전체 기반 지식 오케스트레이션.</li>
+        <li><a href="https://arxiv.org/abs/2606.04701">arXiv: LivingScreen</a> - 동적 화면 GUI 에이전트 벤치마크.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
