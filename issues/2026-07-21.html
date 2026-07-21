@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nottia Weekly Newsletter - 2026-07-21</title>
+  <style>
+    :root {
+      --ink: #171718;
+      --sub: #616268;
+      --line: #dcd9d2;
+      --bg: #f7f4ee;
+      --panel: #fffdf9;
+      --plum: #704b67;
+      --rust: #9a5637;
+      --olive: #5f6942;
+      --blue: #315f78;
+      --soft-plum: #efe6ed;
+      --soft-rust: #f5e8df;
+      --soft-olive: #edf0e4;
+      --soft-blue: #e6f0f4;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--plum);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(112, 75, 103, 0.3);
+    }
+
+    a:hover { border-bottom-color: var(--plum); }
+
+    .wrap {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 30px 0 58px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+    }
+
+    .topbar strong { color: var(--ink); }
+
+    .hero {
+      padding: 44px 0 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--rust);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(36px, 6vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: #3f3e42;
+      font-size: 17px;
+    }
+
+    .opening {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 18px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .opening > div {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .opening ol { margin: 0; padding-left: 20px; }
+    .opening li + li { margin-top: 8px; }
+    .opening p { margin: 0; color: #414044; }
+
+    .stories {
+      display: grid;
+      gap: 0;
+      padding: 18px 0 6px;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .story-label {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 26px;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      color: var(--plum);
+      background: var(--soft-plum);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .badge.rust { color: var(--rust); background: var(--soft-rust); }
+    .badge.olive { color: var(--olive); background: var(--soft-olive); }
+    .badge.blue { color: var(--blue); background: var(--soft-blue); }
+    .signal { color: var(--sub); font-size: 12px; line-height: 1.5; }
+
+    .story h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.28;
+    }
+
+    .lead {
+      margin: 11px 0 0;
+      color: #3d3c40;
+      font-size: 16px;
+    }
+
+    .talk-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .talk-card {
+      min-height: 124px;
+      padding: 15px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .talk-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .talk-card p { margin: 0; color: #444348; font-size: 14px; }
+
+    .talk-card.quote-card {
+      grid-column: 1 / -1;
+      border-left: 4px solid var(--plum);
+    }
+
+    .talk-card.quote-card .quote {
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .links a {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 4px 10px;
+      color: #37323a;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .closing {
+      margin: 28px 0 0;
+      padding: 24px;
+      color: #37363a;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--rust);
+    }
+
+    .closing p { margin: 0; }
+
+    .sources {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .source-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .source-list li { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+
+    @media (max-width: 760px) {
+      .opening, .story, .talk-cards, .source-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <span><a href="../"><strong>Nottia Weekly Newsletter</strong></a> / 2026년 7월 21일</span>
+      <span>멘토링 마지막 주</span>
+    </div>
+
+    <header class="hero">
+      <p class="kicker">Finale · Industry Gossip Edition</p>
+      <h1>마지막 주에는<br>AI 업계 수다로 마무리</h1>
+      <p class="subtitle">새 모델이 몇 점을 받았는지는 잠시 접어두었습니다. 광고 한 편에 경쟁사 대표가 참전하고, 전 직장과 새 직장이 법정에서 맞붙고, Mira Murati가 친정을 떠난 뒤 만든 첫 모델과 OpenAI의 230달러짜리 첫 하드웨어가 함께 등장한 한 주였습니다.</p>
+    </header>
+
+    <section class="opening">
+      <div>
+        <h2 class="section-title">오늘의 수다 4줄</h2>
+        <ol>
+          <li>Anthropic의 진지한 광고가 너무 음산하다는 반응을 얻자 Sam Altman도 한마디를 보탰습니다.</li>
+          <li>Apple은 OpenAI가 전직 Apple 직원들을 통해 영업비밀을 가져갔다고 주장했고, OpenAI는 근거가 없다고 맞섰습니다.</li>
+          <li>전 OpenAI CTO Mira Murati는 20억 달러를 투자받은 지 1년 만에 첫 자체 모델 Inkling을 공개했습니다.</li>
+          <li>OpenAI의 첫 공식 하드웨어는 소문 속 AI 기기가 아니라 Codex를 조작하는 작은 키보드였습니다.</li>
+        </ol>
+      </div>
+      <div>
+        <h2 class="section-title">이번 호를 이렇게 바꾼 이유</h2>
+        <p>마지막 주라서 큰 기술 결론을 하나 더 얹기보다, AI 업계가 실제로 무엇에 반응하는지를 가볍게 보려고 합니다. 기술은 빠르게 바뀌지만 경쟁심, 이직, 투자 기대, 브랜드 싸움은 여전히 이 업계를 움직이는 오래된 동력입니다.</p>
+      </div>
+    </section>
+
+    <section class="stories" aria-label="이번 주 가십 네 가지">
+      <article class="story">
+        <div class="story-label">
+          <span class="badge">01 광고 신경전</span>
+          <span class="signal">가십 지수<br>경쟁사 CEO 참전</span>
+        </div>
+        <div>
+          <h2>Anthropic은 진지했는데, Sam Altman은 풍자로 봤다</h2>
+          <p class="lead">Anthropic의 새 광고는 불타는 집과 감시 카메라, 묘지 같은 이미지를 보여주며 AI를 믿어도 되는지 묻습니다. 그런데 분위기가 너무 무거웠던 탓인지 온라인에서는 “무섭다”는 반응이 나왔고, OpenAI의 Sam Altman은 풍자 계정의 영상인 줄 알았다는 취지로 받아쳤습니다.</p>
+          <div class="talk-cards">
+            <div class="talk-card">
+              <strong>광고가 보여준 장면</strong>
+              <p>불타는 집, 안면인식 감시, 거리에서 자는 사람, 광산 노동자와 묘지가 차례로 등장합니다. 가족 친화적인 기업 광고와는 정반대의 분위기입니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>Anthropic이 던진 질문</strong>
+              <p>광고 제목은 ‘There’s hope in hard questions’. AI를 믿을 수 있는지, 위험할 때 누가 브레이크를 밟을지를 묻습니다.</p>
+            </div>
+            <div class="talk-card quote-card">
+              <strong>Sam Altman의 실제 게시물</strong>
+              <p class="quote">“i thought this was satire, kept looking for the handle to be spelled c1audeai or something”</p>
+              <p>“풍자인 줄 알았고, 계정 이름이 c1audeai 같은 가짜 표기인지 계속 찾아봤다”는 의미입니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>왜 논쟁이 됐을까</strong>
+              <p>Anthropic은 AI 위험을 인정하는 책임 있는 회사 이미지를 만들려 했지만, 일부에는 공포를 마케팅에 활용한 것처럼 보였습니다. 실제 브랜드 효과는 아직 알 수 없습니다.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://techcrunch.com/2026/07/14/anthropics-newest-ad-is-creeping-people-out/">기사 읽기</a>
+            <a href="https://x.com/sama/status/2076824686307271125?s=20">X 원문에서 확인하기</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="story">
+        <div class="story-label">
+          <span class="badge rust">02 법정 공방</span>
+          <span class="signal">가십 지수<br>전 직장 vs 새 직장</span>
+        </div>
+        <div>
+          <h2>OpenAI의 하드웨어 야심에 Apple이 “우리 비밀부터 돌려줘”</h2>
+          <p class="lead">Apple은 OpenAI가 Apple 출신 직원들을 통해 미공개 제품과 기술 정보를 가져갔다며 소송을 제기했습니다. 고소장에는 Apple에서 24년 일한 뒤 OpenAI의 하드웨어 책임자가 된 Tang Tan도 등장합니다. OpenAI는 해당 주장을 뒷받침할 증거를 알지 못한다며 혐의를 부인했습니다.</p>
+          <div class="talk-cards">
+            <div class="talk-card">
+              <strong>Apple이 제기한 소송</strong>
+              <p>Apple은 영업비밀 침해와 계약 위반을 주장하며 OpenAI와 관련 인물들을 상대로 소송을 냈습니다. 미공개 제품의 기술 자료와 부품 정보 등이 쟁점입니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>고소장 속 핵심 인물</strong>
+              <p>Tang Tan은 Apple에서 24년 동안 일하며 iPhone·Apple Watch 제품 디자인 부사장을 지낸 뒤 OpenAI의 하드웨어 책임자가 됐습니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>왜 지금 터졌나</strong>
+              <p>OpenAI는 Jony Ive의 io를 인수하고 소비자 기기를 준비 중입니다. Apple 입장에서는 핵심 인재와 새로운 경쟁 제품이 동시에 움직이기 시작한 시점입니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>아직 결론은 없다</strong>
+              <p>OpenAI는 소송에 근거가 있다는 증거를 알지 못한다며 부인했습니다. Apple의 주장은 아직 법원에서 판단되지 않았고, 준비 중인 기기의 정확한 형태도 확정 공개되지 않았습니다.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/">소송 보도</a>
+            <a href="https://techcrunch.com/2026/07/14/openai-pushes-back-on-apple-trade-secret-lawsuit/">OpenAI 반박</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="story">
+        <div class="story-label">
+          <span class="badge olive">03 화려한 복귀</span>
+          <span class="signal">가십 지수<br>친정 떠난 CTO의 첫 모델</span>
+        </div>
+        <div>
+          <h2>Mira Murati의 복귀작, 최고가 아니라고 먼저 말한 Inkling</h2>
+          <p class="lead">OpenAI에서 CTO와 임시 CEO를 지낸 Mira Murati가 세운 Thinking Machines Lab이 첫 자체 모델 Inkling을 공개했습니다. 제품도 없던 시절 20억 달러를 투자받아 120억 달러의 기업가치를 인정받았던 회사가, 이제 처음으로 “그 돈이 무엇을 만들었는지” 보여주는 시험대에 올랐습니다.</p>
+          <div class="talk-cards">
+            <div class="talk-card">
+              <strong>Mira Murati의 두 번째 무대</strong>
+              <p>Murati는 ChatGPT와 DALL·E 개발을 이끈 전 OpenAI CTO입니다. OpenAI를 떠난 뒤 동료 연구자들과 Thinking Machines Lab을 만들었습니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>제품보다 먼저 들어온 돈</strong>
+              <p>회사는 2025년 첫 모델이나 제품을 내놓기 전에 20억 달러의 시드 투자를 유치했고 120억 달러의 기업가치를 인정받았습니다. Inkling은 그 기대를 검증할 첫 자체 모델입니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>Inkling은 어떤 모델인가</strong>
+              <p>전체 9,750억·활성 410억 파라미터의 오픈웨이트 모델로, 최대 100만 토큰 문맥과 텍스트·이미지·음성 처리를 지원합니다. 사용자가 직접 튜닝하는 것을 핵심으로 내세웁니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>“최강은 아니다”라는 전략</strong>
+              <p>회사는 Inkling이 현재 가장 강한 모델은 아니라고 먼저 밝혔습니다. 대신 빌려 쓰는 범용 모델보다 각 회사가 자기 데이터에 맞춰 바꿀 수 있다는 점에 승부를 걸었습니다.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://thinkingmachines.ai/news/introducing-inkling/">공식 발표</a>
+            <a href="https://www.axios.com/2026/07/15/mira-murati-thinking-machines-open-weight-model-inkling">배경 기사</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="story">
+        <div class="story-label">
+          <span class="badge blue">04 첫 하드웨어</span>
+          <span class="signal">가십 지수<br>AI 기기보다 먼저 나온 키보드</span>
+        </div>
+        <div>
+          <h2>OpenAI의 첫 하드웨어는 ‘아이폰 킬러’가 아니라 키보드였다</h2>
+          <p class="lead">OpenAI가 Work Louder와 함께 Codex Micro라는 230달러짜리 미니 키보드를 내놨습니다. 화면 없는 AI 동반자와 움직이는 스피커가 소문으로 도는 동안, 정작 공식적으로 먼저 판매된 하드웨어는 코딩 에이전트를 손으로 조작하는 데스크 액세서리였습니다.</p>
+          <div class="talk-cards">
+            <div class="talk-card">
+              <strong>230달러짜리 Codex 리모컨</strong>
+              <p>정식 이름은 kbd-1.0-codex-micro. 기계식 키 13개와 터치 센서, 다이얼, 조이스틱을 갖추고 Bluetooth와 USB-C로 Mac·Windows에 연결합니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>불빛으로 보는 에이전트 상태</strong>
+              <p>Agent Key의 RGB 조명이 AI가 생각 중인지, 실행 중인지, 기다리는지, 완료됐는지를 보여줍니다. 여러 Codex 작업을 동시에 돌리는 사용자를 겨냥했습니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>다이얼로 ‘생각의 깊이’ 조절</strong>
+              <p>수락·거절·음성 입력·새 채팅 같은 기능을 전용 키에 지정하고, 다이얼을 돌려 추론 수준을 바꿀 수 있습니다. 조이스틱은 리뷰·디버깅 같은 작업을 실행합니다.</p>
+            </div>
+            <div class="talk-card">
+              <strong>정말 첫 하드웨어일까</strong>
+              <p>공식 판매 제품이라는 의미에서는 첫 진입이지만, OpenAI는 대중용 주력 제품이 아닌 한정 협업이라고 설명했습니다. 진짜 본편으로 여겨지는 화면 없는 AI 기기는 아직 보도 단계입니다.</p>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/supply/co-lab/work-louder/">제품 페이지</a>
+            <a href="https://techcrunch.com/2026/07/15/amid-hardware-legal-battle-openai-releases-a-230-keyboard-for-codex/">기사 읽기</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="closing">
+      <h2 class="section-title">Closing Note</h2>
+      <p>이번 멘토링은 여기서 한 번 마무리합니다. 앞으로도 AI를 볼 때 “무엇이 새로 나왔나”와 함께 “사람들은 어디에 놀라고, 불편해하고, 돈을 걸고 있는가”를 보면 업계의 방향이 조금 더 입체적으로 보일 겁니다. 마지막 호는 그 분위기만 가볍게 남겼습니다.</p>
+    </section>
+
+    <section class="sources">
+      <h2 class="section-title">Source List</h2>
+      <ul class="source-list">
+        <li><a href="https://techcrunch.com/2026/07/14/anthropics-newest-ad-is-creeping-people-out/">TechCrunch · Anthropic 광고 반응</a></li>
+        <li><a href="https://x.com/sama/status/2076824686307271125?s=20">X · Sam Altman의 원문 게시물</a></li>
+        <li><a href="https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/">TechCrunch · Apple의 소송 제기</a></li>
+        <li><a href="https://techcrunch.com/2026/07/14/openai-pushes-back-on-apple-trade-secret-lawsuit/">TechCrunch · OpenAI의 반박</a></li>
+        <li><a href="https://thinkingmachines.ai/news/introducing-inkling/">Thinking Machines Lab · Inkling 공식 발표</a></li>
+        <li><a href="https://www.axios.com/2026/07/15/mira-murati-thinking-machines-open-weight-model-inkling">Axios · Thinking Machines의 투자·출시 배경</a></li>
+        <li><a href="https://openai.com/supply/co-lab/work-louder/">OpenAI · Codex Micro 제품 페이지</a></li>
+        <li><a href="https://techcrunch.com/2026/07/15/amid-hardware-legal-battle-openai-releases-a-230-keyboard-for-codex/">TechCrunch · OpenAI의 첫 하드웨어 진입</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
