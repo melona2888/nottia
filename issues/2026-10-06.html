@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nottia Weekly Newsletter - 2026-10-06</title>
+  <style>
+    :root {
+      --ink: #151718;
+      --sub: #5d646b;
+      --line: #d8dde2;
+      --bg: #f6f7f4;
+      --panel: #ffffff;
+      --tint: #eef4f2;
+      --blue: #255e7c;
+      --green: #286f58;
+      --rust: #8a5636;
+      --soft-blue: #e8f1f5;
+      --soft-green: #e9f3ee;
+      --soft-rust: #f4ece5;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37, 94, 124, 0.28);
+    }
+
+    a:hover {
+      border-bottom-color: var(--blue);
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 30px 0 58px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+    }
+
+    .topbar strong {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 34px 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 720px;
+      color: #343a40;
+      font-size: 17px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .digest {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .glance,
+    .editorial {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .glance ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .glance li + li {
+      margin-top: 10px;
+    }
+
+    .editorial p {
+      margin: 0;
+      color: #353b41;
+    }
+
+    .brief-list {
+      display: grid;
+      gap: 14px;
+      padding: 24px 0;
+    }
+
+    .brief {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .label {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 25px;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: #263036;
+      background: var(--soft-blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge.green {
+      background: var(--soft-green);
+      color: var(--green);
+    }
+
+    .badge.rust {
+      background: var(--soft-rust);
+      color: var(--rust);
+    }
+
+    .signal {
+      color: var(--sub);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .brief h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.28;
+      letter-spacing: 0;
+    }
+
+    .brief-body p,
+    .brief p {
+      margin: 10px 0 0;
+      color: #363d43;
+      font-size: 15px;
+    }
+
+    .brief-body p:first-child {
+      margin-top: 10px;
+    }
+
+    .brief-body p + p {
+      margin-top: 8px;
+    }
+
+    .keyword-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .keyword-card {
+      min-height: 118px;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+    }
+
+    .keyword-title {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .keyword-card p {
+      margin: 0;
+      color: #363d43;
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 4px 10px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: #25313a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .source-table {
+      margin-top: 18px;
+      padding-top: 20px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .source-grid li {
+      padding: 0 0 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 820px) {
+      .digest,
+      .brief {
+        grid-template-columns: 1fr;
+      }
+
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .keyword-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <span><a href="../"><strong>Nottia Weekly Newsletter</strong></a> / 2026년 10월 6일 19호</span>
+      <span>2026-09-30 - 2026-10-06</span>
+    </div>
+
+    <header class="hero">
+      <div>
+        <h1>AI가 더 오래 일하고, 직접 움직이고, 근거를 남기기 시작한 주</h1>
+        <p class="subtitle">Nottia Weekly Newsletter 19호는 더 큰 모델보다 실제 작업의 경계를 봅니다. 이번 주 키워드는 텍스트 출처 표시, 긴 작업과 실시간 음성, 멀티모달 검색, 데스크톱 조작, 그리고 에이전트를 평가하는 기준입니다.</p>
+      </div>
+    </header>
+
+    <section class="digest">
+      <div class="glance">
+        <h2 class="section-title">This Week in 4 Lines</h2>
+        <ol>
+          <li>OpenAI의 textGrain은 AI 텍스트에 보이지 않는 출처 신호를 넣지만, 짧은 글과 편집된 글에서는 탐지 한계도 분명합니다.</li>
+          <li>Gemini 4 Argon과 Microsoft MAI 음성 모델은 AI가 더 긴 작업을 버티고 사람의 말에 더 빠르게 반응하는 방향을 보여줍니다.</li>
+          <li>Cohere Embed 5와 Ai2 AstaBrief는 검색과 보고서 생성에서 텍스트 양보다 출처 연결과 운영 효율을 앞세웠습니다.</li>
+          <li>GitHub Copilot은 화면 조작과 코드형 워크플로로 실행 범위를 넓혔고, ReviewBench는 그 결과를 어떻게 평가할지 묻습니다.</li>
+        </ol>
+      </div>
+      <div class="editorial">
+        <h2 class="section-title">Editorial Note</h2>
+        <p>이번 주의 공통 신호는 AI가 답변 생성기에서 작업 시스템으로 바뀌고 있다는 점입니다. 모델이 오래 일하고 화면을 움직일수록, 출처를 남기고 실행 절차를 고정하며 결과를 검증하는 장치가 같은 속도로 필요해집니다.</p>
+      </div>
+    </section>
+
+    <section class="brief-list" aria-label="Briefing list">
+      <article class="brief">
+        <div class="label">
+          <span class="badge rust">01 Icebreaker</span>
+          <span class="signal">선정 이유: 텍스트 출처 검증</span>
+        </div>
+        <div>
+          <h2>AI가 쓴 글에 보이지 않는 표시를 넣는다</h2>
+          <div class="brief-body">
+            <p>OpenAI는 EU AI Act 대응을 위해 텍스트 워터마크 textGrain을 공개했습니다. EU의 eligible ChatGPT·Codex 출력에는 단계적으로 적용하고, API 고객은 일부 모델에서 선택해 켤 수 있지만 탐지 결과만으로 저자나 진위를 판단할 수는 없습니다.</p>
+            <div class="keyword-cards" aria-label="OpenAI textGrain 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">단어 선택에 숨은 신호</strong>
+                <p>textGrain은 문장에 별도 문구를 붙이지 않고 모델의 단어 선택에 통계적 신호를 심습니다. OpenAI는 기술을 향후 오픈소스로 공개할 계획이라고 밝혔습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">EU는 단계적 기본 적용</strong>
+                <p>eligible ChatGPT·Codex 텍스트에는 앞으로 몇 주에 걸쳐 EU에서만 적용됩니다. 글로벌 API는 일부 모델에서 opt-in이며 기본값은 꺼져 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">편집하면 탐지가 약해진다</strong>
+                <p>400토큰 글에서 단어 10%를 동의어로 바꾸자 탐지율이 약 92%에서 66%로, 25%를 바꾸자 17%로 낮아졌다는 자체 평가가 공개됐습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">AI 표시가 진실 판정은 아니다</strong>
+                <p>워터마크는 누가 썼는지, 글이 사실인지, 인간이 얼마나 고쳤는지를 알려주지 않습니다. 미탐지 역시 인간 작성의 증거가 아닙니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/index/eu-text-provenance/">OpenAI text provenance</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 긴 작업 모델</span>
+        </div>
+        <div>
+          <h2>Gemini 4 Argon, 긴 업무와 사이버 방어를 겨냥하다</h2>
+          <div class="brief-body">
+            <p>Google DeepMind는 소프트웨어 개발, 법률·금융 지식 업무, 사이버 방어처럼 단계가 긴 작업을 겨냥한 Gemini 4 Argon을 공개했습니다. 다만 먼저 제한된 신뢰 사용자에게 제공되며 일반 사용자는 아직 바로 쓸 수 없습니다.</p>
+            <div class="keyword-cards" aria-label="Gemini 4 Argon 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">출력 상한 100만 토큰</strong>
+                <p>Argon은 최대 출력 길이를 이전 64K에서 1M 토큰으로 늘렸습니다. 입력 컨텍스트가 아니라 한 번에 생성할 수 있는 출력 상한이라는 점을 구분해야 합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">오래 이어지는 업무에 초점</strong>
+                <p>복잡한 코드 작업과 법률·금융 업무처럼 여러 단계를 유지해야 하는 흐름을 핵심 대상으로 삼았습니다. 벤치마크 우위는 Google 자체 평가입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">취약점 찾기부터 패치까지</strong>
+                <p>사이버 방어에서는 취약점을 찾고 검증한 뒤 패치하는 연속 작업을 강조합니다. 고위험 실행을 위한 샌드박스 격리와 행동 모니터링도 함께 설명했습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">지금은 제한 공개</strong>
+                <p>초기 접근은 Fairwind Program의 신뢰된 방어자 중심입니다. 유료 API 고객과 Google AI Ultra로의 확대는 예정됐지만 일반 출시일은 확정되지 않았습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Google Argon announcement</a>
+            <a href="https://deepmind.google/models/gemini/">Gemini model page</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 실시간 음성</span>
+        </div>
+        <div>
+          <h2>말이 끝나기 전에 듣고, 같은 목소리로 여러 언어를 말한다</h2>
+          <div class="brief-body">
+            <p>Microsoft는 실시간 전사 모델 MAI-Transcribe-2-Streaming과 음성 생성 모델 MAI-Voice-2.1·Flash를 함께 공개했습니다. 음성 에이전트가 듣고 생각하고 답하는 지연을 줄이면서, 한 목소리로 여러 언어를 오가는 흐름을 겨냥합니다.</p>
+            <div class="keyword-cards" aria-label="Microsoft MAI 음성 모델 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">100ms대 첫 자막</strong>
+                <p>전사 모델은 오디오가 들어온 뒤 100ms를 조금 넘겨 첫 부분 결과를 내고, 문맥이 쌓이면 수정해 확정합니다. 60개 언어를 지원합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">23개 언어, 같은 화자</strong>
+                <p>MAI-Voice-2.1 계열은 23개 언어와 26개 로캘에서 한 화자 정체성을 유지한 채 언어를 바꾸는 사용 사례를 내세웁니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Flash는 응답 지연을 줄인다</strong>
+                <p>Flash는 45초 분량 음성을 150ms의 종단 지연으로 생성한다고 Microsoft는 설명합니다. 공급사 평가이므로 실제 앱 지연은 네트워크와 전체 파이프라인에 따라 달라집니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Foundry와 Playground에서 시작</strong>
+                <p>세 모델은 Microsoft Foundry와 MAI Playground 등에서 제공됩니다. Voice 모델과 음성 복제는 preview·동의·접근 제한 조건을 확인해야 합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://microsoft.ai/news/our-first-streaming-transcription-model/">Microsoft MAI voice models</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 멀티모달 검색</span>
+        </div>
+        <div>
+          <h2>Cohere Embed 5, 문서는 꼼꼼히 넣고 검색은 빠르게 한다</h2>
+          <div class="brief-body">
+            <p>Cohere는 기업 문서 검색용 Embed 5를 품질 중심 Pro와 속도 중심 Fast로 나눴습니다. 두 모델이 같은 벡터 공간을 써서, 문서는 Pro로 색인하고 사용자의 질문은 Fast로 처리하는 운영 구성이 가능해졌습니다.</p>
+            <div class="keyword-cards" aria-label="Cohere Embed 5 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">Pro로 저장, Fast로 질문</strong>
+                <p>두 모델이 같은 embedding space를 공유합니다. 품질이 중요한 색인은 Pro로 하고, 반복되는 실시간 질의는 Fast로 처리할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">PDF 한 페이지를 통째로</strong>
+                <p>텍스트와 이미지가 섞인 입력을 함께 벡터화합니다. 표, 도표, 스캔 페이지가 섞인 기업 문서를 별도 조각으로 잃지 않는 검색을 겨냥합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">100개 이상 언어, 128K</strong>
+                <p>100개가 넘는 언어와 128K 컨텍스트를 지원합니다. 긴 문서와 다국어 자료를 같은 검색 체계에 넣는 부담을 줄이는 방향입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">API와 클라우드에서 제공</strong>
+                <p>Cohere API, Microsoft Foundry, Amazon SageMaker, Model Vault에서 사용할 수 있습니다. 검색 품질 개선 수치는 공급사 평가로 봐야 합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://docs.cohere.com/changelog/embed-v5">Cohere Embed 5 release</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 근거형 연구 보고서</span>
+        </div>
+        <div>
+          <h2>AstaBrief 8B, 논문 묶음을 인용 가능한 보고서로 빠르게 바꾼다</h2>
+          <div class="brief-body">
+            <p>Ai2는 검색된 논문 내용을 받아 인용이 붙은 과학 보고서를 한 번에 생성하는 AstaBrief 8B를 공개했습니다. 연구 질문이 민감하거나 미공개일 때 로컬에서 돌릴 수 있도록 가중치와 학습 데이터, PDF 워크플로 예시까지 열었습니다.</p>
+            <div class="keyword-cards" aria-label="Ai2 AstaBrief 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">8B 공개 가중치</strong>
+                <p>Qwen3-8B를 바탕으로 과학 보고서의 구조와 인용 연결을 학습했습니다. 기관이 자체 인프라에 배포할 수 있다는 점이 핵심입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">보고서 51.1초</strong>
+                <p>Ai2의 전체 파이프라인에서 Fast mode는 평균 51.1초, 기존 Thinking mode는 178.5초였습니다. 약 3.5배 차이는 해당 시스템 안에서의 자체 측정입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">인용 밀도로 학습 데이터 선별</strong>
+                <p>근거가 적은 합성 보고서를 걸러내는 데 복잡한 필터 조합보다 인용 밀도가 가장 유용했다고 Ai2는 설명합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">오늘의 프런티어 비교는 아님</strong>
+                <p>주요 학습·평가는 2025년에 진행됐고 사람 평가는 14개 질문의 소규모 연구였습니다. 현재 최고 모델보다 낫다는 발표로 읽으면 안 됩니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://allenai.org/blog/astabrief">Ai2 AstaBrief</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: GUI 자동화</span>
+        </div>
+        <div>
+          <h2>GitHub Copilot, API 없는 데스크톱 앱도 보고 클릭한다</h2>
+          <div class="brief-body">
+            <p>GitHub Copilot의 computer use가 CLI와 Copilot 앱에 public preview로 들어왔습니다. 접근성 정보와 화면을 읽고 클릭·입력·스크롤·드래그해, API나 명령줄이 없는 오래된 업무 프로그램까지 자동화 범위를 넓힙니다.</p>
+            <div class="keyword-cards" aria-label="GitHub Copilot computer use 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">화면이 새로운 도구</strong>
+                <p>에이전트가 앱의 접근성 정보와 시각 문맥을 읽고 컨트롤을 조작합니다. 브라우저 알림 정리, 프레젠테이션 수정, GUI 업무 이동이 예시입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">조작 전 승인</strong>
+                <p>Copilot은 앱을 제어하기 전에 승인을 요청합니다. 항상 허용한 앱도 사용자가 목록을 검토하거나 초기화할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">macOS·Windows preview</strong>
+                <p>공개 미리보기는 두 운영체제의 Copilot CLI와 Copilot 앱에서 제공됩니다. macOS는 접근성·화면 기록 권한이 필요합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">GUI는 변하기 쉽다</strong>
+                <p>화면 자동화는 버튼 위치와 권한 상태에 영향을 받습니다. 결과 목표, 사용할 앱, 멈춰야 할 조건을 함께 적는 운영 습관이 중요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps/">GitHub Copilot computer use</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 반복 가능한 에이전트 절차</span>
+        </div>
+        <div>
+          <h2>에이전트 협업을 프롬프트가 아니라 코드로 고정한다</h2>
+          <div class="brief-body">
+            <p>GitHub의 Dynamic workflows는 자동 단계와 여러 에이전트의 판단을 하나의 프로그램으로 정의합니다. 같은 조사·검토·배포 절차를 반복할 때 실행 순서, 결과 형식, 검증, 중간 승인을 코드에 남기는 방식입니다.</p>
+            <div class="keyword-cards" aria-label="GitHub Dynamic workflows 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">순차와 병렬을 함께</strong>
+                <p>작업을 차례로 실행하거나 독립 항목을 병렬로 나눌 수 있습니다. 각 단계의 구조화 결과를 다음 단계에 넘길 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">에이전트가 서로 검증</strong>
+                <p>두 모델이 같은 판단을 내릴 때만 결과를 보고하거나, 한 에이전트가 다른 에이전트의 발견을 확인하는 절차를 만들 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">중간에 멈추고 다시 시작</strong>
+                <p>체크포인트에서 사람이 결과를 검토한 뒤 재개할 수 있습니다. 오래 걸리거나 비용이 큰 실행에 명시적 통제점을 둡니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">간단한 일에는 과하다</strong>
+                <p>Copilot 앱에서는 바로 쓸 수 있고 CLI는 experimental 설정이 필요합니다. 기능은 public preview이며 단순 수정은 일반 대화가 더 적합합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/">GitHub Dynamic workflows</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 코드 리뷰 평가</span>
+        </div>
+        <div>
+          <h2>ReviewBench, AI 코드 리뷰의 '많이 찾기'와 '덜 틀리기'를 함께 잰다</h2>
+          <div class="brief-body">
+            <p>GitHub는 실제 pull request 분포를 반영해 코드 리뷰 에이전트를 평가하는 공개 벤치마크 ReviewBench를 발표했습니다. 리뷰 코멘트 수가 많다는 사실보다 중요한 문제를 얼마나 찾고, 불필요한 지적을 얼마나 줄였는지 분리해 봅니다.</p>
+            <div class="keyword-cards" aria-label="GitHub ReviewBench 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">219개 실제 PR 평가 집합</strong>
+                <p>약 1억여 건의 GitHub PR 분포를 분석해 19개 언어의 공개 PR 219개를 골랐습니다. 1억 개를 직접 평가한 벤치마크는 아닙니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">정답 하나 대신 여러 근거</strong>
+                <p>사람 리뷰, LLM 제안, 정적 분석 결과를 모은 뒤 전문가 검증을 거쳐 평가 기준을 만들었습니다. 놓친 문제도 다시 찾는 구조입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Precision과 recall을 분리</strong>
+                <p>쓸모 있는 지적 비율과 실제 문제를 찾은 비율을 함께 봅니다. 심각도와 유형별로도 나눠 리뷰어의 성향을 비교할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">벤치마크는 품질 보증이 아니다</strong>
+                <p>GitHub는 내부 A/B 테스트와 같은 방향의 변화를 확인했다고 밝혔지만, 특정 저장소의 품질을 자동 보장하지는 않습니다. 사람 검토는 계속 필요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/">GitHub ReviewBench</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge green">04 Research</span>
+          <span class="signal">선정 이유: 에이전트·추론 연구 5선</span>
+        </div>
+        <div>
+          <h2>이번 주 연구 노트: 더 잘 생각하기보다 더 잘 보고, 나누고, 검증하기</h2>
+          <div class="brief-body">
+            <p>이번 주 논문은 공간을 내부에 그리는 모델부터 에이전트 평가, 메타 추론, 검색 기반 예측, 자기 증류까지 이어집니다. 공통점은 계산량만 늘리기보다 정보와 검증 경로를 설계한다는 점입니다.</p>
+            <div class="keyword-cards" aria-label="이번 주 연구 노트 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">답하기 전에, 공간을 상상한다</strong>
+                <p>Imagine3D-LLM은 여러 시점의 사진에서 3차원 장면을 내부에 만든 뒤 질문에 답합니다. 실내 장면 중심 결과라 복잡한 야외 환경으로의 일반화는 아직 확인되지 않았습니다. <a href="https://arxiv.org/abs/2609.38177">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">같은 AI도, 주어진 정보가 바꾼다</strong>
+                <p>과학 코딩 과제에서는 모델 크기나 시간보다 제공 정보가 결과를 더 크게 바꿨고, 검증 문구보다 전용 도구가 실제 검증 행동에 더 효과적이었습니다. 네 과제의 결과라 일반화에는 주의가 필요합니다. <a href="https://arxiv.org/abs/2610.01618">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">더 생각하기 전에, 무엇을 할지 생각한다</strong>
+                <p>작업자와 제어자를 나눠 기존 결과 재사용, 새 시도, 중단 시점을 고르는 메타 추론 방식입니다. 제어 비용 때문에 작은 계산 예산에서는 오히려 불리할 수 있습니다. <a href="https://arxiv.org/abs/2609.38147">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">예측을 잘하려면, 검색부터 배운다</strong>
+                <p>검색하고 읽은 근거로 사건 확률을 예측하도록 학습하자 저자 평가에서 보정은 좋아지고 평균 검색 횟수는 3.8회에서 2.25회로 줄었습니다. 이미 결과가 나온 질문을 쓴 회고 평가입니다. <a href="https://arxiv.org/abs/2610.01955">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">AI의 자습에도, 정답 확인이 필요하다</strong>
+                <p>OASIS는 모델이 만든 풀이 중 최종 정답이 확인된 시도를 중심으로 다시 학습합니다. Qwen3 소형 모델과 수학 벤치마크 결과라 정답 없이 스스로 성장한다고 해석하면 안 됩니다. <a href="https://arxiv.org/abs/2609.37915">arXiv</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="source-table">
+      <h2 class="section-title">Source List</h2>
+      <ul class="source-grid">
+        <li><a href="https://openai.com/index/eu-text-provenance/">OpenAI text provenance</a> - EU 텍스트 워터마크 적용 범위와 탐지 한계</li>
+        <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">Google Gemini 4 Argon</a> - 긴 업무·사이버 방어 모델 발표와 제한 공개 조건</li>
+        <li><a href="https://microsoft.ai/news/our-first-streaming-transcription-model/">Microsoft MAI voice models</a> - 실시간 전사와 다국어 음성 모델 3종</li>
+        <li><a href="https://docs.cohere.com/changelog/embed-v5">Cohere Embed 5</a> - Pro·Fast 공유 공간과 멀티모달 검색 사양</li>
+        <li><a href="https://allenai.org/blog/astabrief">Ai2 AstaBrief</a> - 8B 공개 가중치 연구 보고서 모델과 평가 한계</li>
+        <li><a href="https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps/">GitHub Copilot computer use</a> - macOS·Windows 데스크톱 조작 public preview</li>
+        <li><a href="https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/">GitHub Dynamic workflows</a> - 코드로 정의하는 재사용 가능 에이전트 절차</li>
+        <li><a href="https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/">GitHub ReviewBench</a> - 실제 PR 분포를 반영한 코드 리뷰 공개 벤치마크</li>
+        <li><a href="https://arxiv.org/abs/2609.38177">Imagine3D-LLM</a> - 다중 시점 이미지 기반 3D 장면 상상</li>
+        <li><a href="https://arxiv.org/abs/2610.01618">Agents Are Systems, Not Models</a> - 정보·도구·변동성을 포함한 에이전트 평가</li>
+        <li><a href="https://arxiv.org/abs/2609.38147">Thinking Before Thinking</a> - 계산 예산을 배분하는 메타 추론 제어자</li>
+        <li><a href="https://arxiv.org/abs/2610.01955">Do Your Own Research</a> - 검색 행동을 학습한 확률 예측 에이전트</li>
+        <li><a href="https://arxiv.org/abs/2609.37915">OASIS self-distillation</a> - 정답 검증을 넣은 자기 증류 방식</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
