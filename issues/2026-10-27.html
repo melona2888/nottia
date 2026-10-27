@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nottia Weekly Newsletter - 2026-10-27</title>
+  <style>
+    :root {
+      --ink: #151718;
+      --sub: #5d646b;
+      --line: #d8dde2;
+      --bg: #f6f7f4;
+      --panel: #ffffff;
+      --tint: #eef4f2;
+      --blue: #255e7c;
+      --green: #286f58;
+      --rust: #8a5636;
+      --soft-blue: #e8f1f5;
+      --soft-green: #e9f3ee;
+      --soft-rust: #f4ece5;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37, 94, 124, 0.28);
+    }
+
+    a:hover {
+      border-bottom-color: var(--blue);
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 30px 0 58px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+    }
+
+    .topbar strong {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 34px 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 720px;
+      color: #343a40;
+      font-size: 17px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .digest {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .glance,
+    .editorial {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .glance ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .glance li + li {
+      margin-top: 10px;
+    }
+
+    .editorial p {
+      margin: 0;
+      color: #353b41;
+    }
+
+    .brief-list {
+      display: grid;
+      gap: 14px;
+      padding: 24px 0;
+    }
+
+    .brief {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .label {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 25px;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: #263036;
+      background: var(--soft-blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge.green {
+      background: var(--soft-green);
+      color: var(--green);
+    }
+
+    .badge.rust {
+      background: var(--soft-rust);
+      color: var(--rust);
+    }
+
+    .signal {
+      color: var(--sub);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .brief h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.28;
+      letter-spacing: 0;
+    }
+
+    .brief-body p,
+    .brief p {
+      margin: 10px 0 0;
+      color: #363d43;
+      font-size: 15px;
+    }
+
+    .brief-body p:first-child {
+      margin-top: 10px;
+    }
+
+    .brief-body p + p {
+      margin-top: 8px;
+    }
+
+    .keyword-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .keyword-card {
+      min-height: 118px;
+      padding: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+    }
+
+    .keyword-title {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .keyword-card p {
+      margin: 0;
+      color: #363d43;
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 4px 10px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: #25313a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .source-table {
+      margin-top: 18px;
+      padding-top: 20px;
+      border-top: 3px solid var(--ink);
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .source-grid li {
+      padding: 0 0 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width: 820px) {
+      .digest,
+      .brief {
+        grid-template-columns: 1fr;
+      }
+
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .keyword-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <span><a href="../"><strong>Nottia Weekly Newsletter</strong></a> / 2026년 10월 27일 22호</span>
+      <span>2026-10-21 - 2026-10-27</span>
+    </div>
+
+    <header class="hero">
+      <div>
+        <h1>AI가 더 싸게 움직이고, 더 넓게 연결되고, 경계를 다시 세운 주</h1>
+        <p class="subtitle">Nottia Weekly Newsletter 22호는 화면을 다루는 고효율 모델, 클라우드를 넘는 모델 선택, 공개 음성 모델, 그리고 에이전트 구조·패키지 설치·협업 흐름의 새 안전장치를 함께 봅니다.</p>
+      </div>
+    </header>
+
+    <section class="digest">
+      <div class="glance">
+        <h2 class="section-title">This Week in 4 Lines</h2>
+        <ol>
+          <li>Google Arts &amp; Culture는 기록이 부족한 여성 조각가의 작업실을 AI로 재구성해 전시와 다큐멘터리로 연결했습니다.</li>
+          <li>GPT-6.1 Terra는 화면 조작과 시각 이해를 더 낮은 비용으로 제공하며 ChatGPT Work, Codex, API에 동시 출시됐습니다.</li>
+          <li>OpenAI 모델의 Google Cloud 진입 예고와 공통 안전정책은 모델 선택권이 넓어질수록 접속 경로와 통제 기준도 중요해짐을 보여줍니다.</li>
+          <li>개발 도구는 에이전트 수를 줄이는 설계, 설치 단계의 패키지 방화벽, Teams 알림에서 수정 PR로 이어지는 흐름을 제시했습니다.</li>
+        </ol>
+      </div>
+      <div class="editorial">
+        <h2 class="section-title">Editorial Note</h2>
+        <p>이번 주에는 모델의 성능 향상보다 배치 방식의 변화가 더 선명했습니다. 화면 조작 모델은 더 싸고 빨라졌고, 같은 모델을 여러 클라우드와 제품에서 고르는 경로가 새로 예고됐습니다. 동시에 에이전트 구조를 단순화하고 설치 요청을 검사하며 사람이 PR을 검토하는 경계가 구체화됐습니다. 이제 중요한 질문은 “어떤 AI가 가장 강한가”보다 “어디에 연결하고, 무엇을 맡기며, 어떤 증거로 멈출 것인가”에 가깝습니다.</p>
+      </div>
+    </section>
+
+    <section class="brief-list" aria-label="Briefing list">
+      <article class="brief">
+        <div class="label">
+          <span class="badge rust">01 Icebreaker</span>
+          <span class="signal">선정 이유: 문화 기록의 재구성</span>
+        </div>
+        <div>
+          <h2>기록이 드문 작업실을 AI로 재구성해, 잊힌 예술가를 다시 본다</h2>
+          <div class="brief-body">
+            <p>작가 Prune Nourry와 Google Arts &amp; Culture는 19세기 말과 20세기 초 파리에서 활동했지만 기록에서 밀려난 여성 조각가 18명을 조명하는 전시를 열었습니다. 남아 있는 편지·일지·사진을 바탕으로 생성형 AI가 작업실의 모습을 재구성했지만, 복원된 장면은 역사적 사진이 아니라 자료에 근거한 시각적 해석입니다.</p>
+            <div class="keyword-cards" aria-label="Google Arts and Culture Visionaries 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">여성 조각가 18명의 기록</strong>
+                <p>미술사 연구자들이 편지, 일지, 인물 사진을 모아 조각가들의 삶과 활동을 추적했습니다. AI는 그 조사 결과를 보여주는 한 가지 표현 도구로 사용됐습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">사진에서 3D 카메라 경로로</strong>
+                <p>Google Gemini 기반 맞춤 도구가 보관 사진을 바탕으로 3D 모델과 카메라 이동을 만들었습니다. 관람자는 정지 사진만 보는 대신 가상의 작업실을 이동하는 듯한 장면을 봅니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">전시와 10분 다큐로 공개</strong>
+                <p>파리 Petit Palais의 전시는 2026년 10월 20일부터 2027년 1월 30일까지 열립니다. 함께 만든 10분 다큐멘터리는 Google Arts &amp; Culture에서도 볼 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">복원보다 해석에 가깝다</strong>
+                <p>실제 작업실 사진이 거의 없기 때문에 AI 장면을 역사적 사실의 정확한 복제로 보면 안 됩니다. 어떤 자료를 근거로 무엇을 상상했는지 구분해서 보는 프로젝트입니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://blog.google/company-news/outreach-and-initiatives/arts-culture/visionaries-petit-palais-art-basel-paris-prune-nourry/">Google Arts &amp; Culture Visionaries</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 화면 조작 비용 절감</span>
+        </div>
+        <div>
+          <h2>GPT-6.1 Terra, 화면을 보고 움직이는 AI의 비용 문턱을 낮춘다</h2>
+          <div class="brief-body">
+            <p>OpenAI는 시각 이해와 컴퓨터 사용에 초점을 둔 GPT-6.1 Terra를 출시했습니다. 서류 입력, 기술 도면 해석, 영상 편집처럼 화면을 읽고 직접 조작하는 고빈도 업무를 더 빠르고 저렴하게 처리하려는 모델입니다.</p>
+            <div class="keyword-cards" aria-label="GPT-6.1 Terra 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">기존 Terra보다 API 가격 50% 낮게</strong>
+                <p>표준 API 가격은 입력 100만 토큰당 1달러, 캐시 입력 0.05달러, 출력 5달러입니다. GPT-5.6 Terra와 GPT-6.1 Sol의 표준 가격보다 50% 낮다고 OpenAI는 설명합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">화면 작업 성적은 높고 비용은 낮게</strong>
+                <p>OpenAI 자체 Agents' Last Exam에서 중간 추론 기준 GPT-5.6 Terra보다 15%포인트 높고 비용은 약 3분의 1이었다고 발표했습니다. 공급사 벤치마크이므로 실제 업무에서는 별도 평가가 필요합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">코딩도 개선, 최고 난도는 Sol·Astra</strong>
+                <p>Terminal-Bench 4.0 최대 추론에서 50.3%를 기록해 GPT-5.6 Terra의 공개 점수 21.5%를 넘었습니다. 다만 복잡한 코딩은 Sol과 Astra가 더 적합하다고 명시했습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Work·Codex·API에 같은 날</strong>
+                <p>Plus, Pro, Enterprise, Edu 사용자는 ChatGPT Work와 Codex에서 쓸 수 있고 API 모델명은 <code>gpt-6.1-terra</code>입니다. 사이버 보안 능력은 Preparedness Framework의 Critical 기준에 해당합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/index/introducing-gpt-6-1-terra/">OpenAI GPT-6.1 Terra</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 클라우드 모델 선택권</span>
+        </div>
+        <div>
+          <h2>OpenAI 모델과 Codex, Google Cloud의 모델 정원에 제공될 예정이다</h2>
+          <div class="brief-body">
+            <p>OpenAI와 Google Cloud는 OpenAI의 프런티어 모델과 Codex 에이전트 흐름을 Google Cloud Model Garden에 제공하기로 했습니다. 기업은 기존 Google Cloud의 접근 제어와 청구 체계 안에서 OpenAI 모델을 평가하고 도입할 수 있게 됩니다.</p>
+            <div class="keyword-cards" aria-label="OpenAI models on Google Cloud 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">Model Garden에서 네이티브 접근</strong>
+                <p>일반 제공 뒤에는 Google Cloud 고객이 익숙한 클라우드 환경에서 OpenAI 모델과 Codex를 선택해 에이전트 흐름을 만들 수 있게 됩니다. 별도 실험 계정과 운영 환경 사이의 이동을 줄이는 변화입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">GCP 약정 금액으로 구매</strong>
+                <p>Google Cloud Marketplace를 통해 구매하고 기존 GCP 사용 약정을 소진하는 데 활용할 수 있습니다. 계약·가격·지역별 조건은 실제 제공 시점에 다시 확인해야 합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Antigravity와 Gemini Agent에도 예정</strong>
+                <p>OpenAI 모델은 Google Antigravity와 Gemini Agent에도 들어갈 예정입니다. 한 에이전트 제품 안에서 과제에 따라 모델을 고르는 방향을 보여줍니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">아직 일반 제공 전</strong>
+                <p>일반 제공은 향후 몇 주 안으로 계획됐고 OpenAI는 현재 접근 요청을 받고 있습니다. Microsoft는 여전히 OpenAI의 주 클라우드 파트너라고 양사가 함께 밝혔습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/index/openai-models-google-cloud/">OpenAI models on Google Cloud</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 접속 경로별 안전 기준</span>
+        </div>
+        <div>
+          <h2>같은 OpenAI 모델을 어디서 써도, 안전정책은 함께 따라간다</h2>
+          <div class="brief-body">
+            <p>OpenAI는 자사 서비스, 파트너 호스팅, 리셀러 등 서로 다른 경로에서 모델을 제공하더라도 같은 수준의 보호조치를 적용하겠다고 밝혔습니다. 모델 유통 경로가 넓어지는 만큼 우회 접속과 책임 공백을 줄이려는 정책 변화입니다.</p>
+            <div class="keyword-cards" aria-label="OpenAI consistent safety standards 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">파트너도 같은 보호조치</strong>
+                <p>OpenAI 모델을 직접 제공하는 파트너는 자체 서비스에서도 OpenAI와 일치하는 보호조치를 유지하고, 위반을 조사하며, 필요한 집행을 조율해야 합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">라우터·게이트웨이는 사전 검토</strong>
+                <p>모델 라우터나 AI 게이트웨이처럼 사용자에게 직접 접속을 제공하는 서비스는 OpenAI의 검토와 승인을 받아야 한다는 요구가 새 이용정책에 포함됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">새 정책은 11월 20일 발효</strong>
+                <p>업데이트된 Usage Policies는 2026년 11월 20일부터 적용됩니다. 파트너와 개발자는 제공 경로와 민감한 사용 사례가 새 조건에 맞는지 확인해야 합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">SafetyID로 개인 식별은 줄이기</strong>
+                <p>고객이 익명화된 SafetyID를 제공하면 OpenAI가 실제 신원을 알지 않고도 개별 최종 사용자를 구분해 오남용을 조사할 수 있도록 준비하고 있습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://openai.com/index/broad-access-through-consistent-standards/">OpenAI consistent safety standards</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">02 Main</span>
+          <span class="signal">선정 이유: 공개 음성 모델 선택지</span>
+        </div>
+        <div>
+          <h2>Granite Speech 5.0, 받아쓰기·번역·화자 구분을 열린 모델로 나눈다</h2>
+          <div class="brief-body">
+            <p>IBM은 정확도 중심 2B 모델, 속도 중심 470M 모델, 회의·통화용 화자 구분 모델로 Granite Speech 제품군을 업데이트했습니다. 한 모델로 모든 음성 작업을 해결하기보다 정확도, 속도, 발화자 추적에 맞춰 공개 가중치 모델을 고르는 구성입니다.</p>
+            <div class="keyword-cards" aria-label="IBM Granite Speech 5.0 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">2B 모델은 6개 언어 받아쓰기</strong>
+                <p>영어, 프랑스어, 독일어, 스페인어, 포르투갈어, 일본어를 받아쓰고 영어와 상호 번역합니다. 최대 2,000개 전문 용어를 우선 인식하도록 지정할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">470M 모델은 다국어·엣지용</strong>
+                <p>Turbo CTC는 7개 언어 받아쓰기와 구두점·대문자 출력을 지원합니다. IBM 측 공개 평가에서는 초기 버전보다 약 1.6배 빠른 처리량을 기록했습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">회의에서는 누가 말했는지까지</strong>
+                <p>업데이트된 4.1 2B Plus는 화자 구분 오류와 타임스탬프 오차를 줄이고 긴 녹음의 WER를 24% 낮췄다고 발표했습니다. 수치는 IBM의 공개 테스트 기준입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Apache 2.0, 한국어는 미지원</strong>
+                <p>세 모델 모두 Apache 2.0으로 공개되고 Transformers를 지원합니다. 발표된 지원 언어에 한국어는 없으며 실제 소음 환경과 도메인 용어 정확도는 별도 검증이 필요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://huggingface.co/blog/ibm-granite/granite-speech-5">IBM Granite Speech 5.0</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 에이전트 구조 단순화</span>
+        </div>
+        <div>
+          <h2>서브에이전트를 늘리기 전에, 하나의 루프로 합쳐 성능을 비교한다</h2>
+          <div class="brief-body">
+            <p>Anthropic은 여러 라우터·플래너·도메인 에이전트를 하나의 메인 루프와 필요할 때만 읽는 Skills·도구로 합치는 설계 가이드를 공개했습니다. 핵심은 멀티에이전트를 금지하는 것이 아니라 대표 과제에서 품질·비용·지연을 비교해 필요한 분리만 남기는 것입니다.</p>
+            <div class="keyword-cards" aria-label="Anthropic single agent loop 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">한 컨텍스트에서 계획과 실행</strong>
+                <p>계획을 만든 모델이 같은 컨텍스트에서 도구 결과를 보고 다음 단계를 바꿉니다. 서브에이전트 사이의 요약 전달에서 세부 정보가 사라지는 문제를 줄이려는 구조입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Skills와 도구는 필요할 때만</strong>
+                <p>짧은 설명만 먼저 보여주고 필요한 지침과 도구 정의를 그때 불러오는 progressive disclosure를 권합니다. 긴 시스템 프롬프트를 모두 넣는 방식과 구분됩니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">골든 예시 10개부터 비교</strong>
+                <p>작은 종단 간 평가 세트를 만든 뒤 서브에이전트를 하나씩 합치고 성공률·지연·비용을 여러 번 비교하라고 안내합니다. 구조가 단순하다는 이유만으로 개선을 단정하지 않습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">검증·병렬 작업은 계속 분리</strong>
+                <p>독립 검증, 서로 겹치지 않는 병렬 작업, 권한 분리가 필요하면 서브에이전트가 여전히 유효합니다. 조직도를 그대로 에이전트 구조로 복제하는 관행을 경계합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop">Anthropic agent design guide</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 에이전트 설치 안전장치</span>
+        </div>
+        <div>
+          <h2>GitHub package firewall, 에이전트가 설치하기 전에 패키지를 검사한다</h2>
+          <div class="brief-body">
+            <p>GitHub는 10월 20일 package firewall을 공개하고 21일 설명을 보완했습니다. 코딩 에이전트와 CI가 사람 확인 없이 의존성을 설치할 때, 패키지 저장소 앞에서 메타데이터와 실제 다운로드를 정책에 따라 검사하는 공개 프리뷰입니다.</p>
+            <div class="keyword-cards" aria-label="GitHub package firewall 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">설치 요청과 파일을 모두 검사</strong>
+                <p>패키지 목록을 묻는 메타데이터 요청과 실제 다운로드가 방화벽을 통과합니다. 관리자가 정한 정책에 맞지 않으면 설치를 막고 예외 요청 흐름을 제공합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">새 패키지는 냉각 기간</strong>
+                <p>등록 직후 패키지를 일정 시간 막는 cooldown, GitHub Advisory Database의 악성코드·취약점 확인, attestation 약화 같은 공급망 정책을 설정할 수 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Enterprise Cloud 공개 프리뷰</strong>
+                <p>GitHub Enterprise Cloud와 데이터 레지던시 고객에게 제공되며 프리뷰 기간에는 무료입니다. 정식 출시 뒤에는 Actions처럼 사용량 과금이 예정돼 있습니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">현재는 npm만 지원</strong>
+                <p>개발 환경과 CI의 패키지 요청을 방화벽으로 보내도록 별도 구성해야 하며 지금은 npm 패키지만 지원합니다. 모든 언어의 공급망 보호 기능으로 소개하면 안 됩니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview/">GitHub package firewall</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge">03 Dev</span>
+          <span class="signal">선정 이유: 알림에서 수정 PR까지</span>
+        </div>
+        <div>
+          <h2>Teams에 온 버그 알림이 Copilot의 수정 PR로 이어진다</h2>
+          <div class="brief-body">
+            <p>GitHub는 Microsoft Teams용 통합 앱에 Copilot 작업 흐름을 붙였습니다. 채널이나 개인 대화에 버그 알림이 오면 <code>@GitHub</code>를 불러 이슈를 조사하고 코드를 수정해 PR을 만들도록 맡길 수 있습니다.</p>
+            <div class="keyword-cards" aria-label="GitHub Copilot in Teams 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">대화창에서 바로 조사 요청</strong>
+                <p>채널, 그룹 채팅, 개인 채팅에서 GitHub 알림을 받고 같은 자리에서 에이전트 작업을 시작합니다. 알림 확인과 저장소 이동 사이의 단계를 줄입니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">이슈에서 수정 PR까지</strong>
+                <p>Copilot이 버그 이슈를 조사하고 수정안을 만들어 PR로 남깁니다. 최종 흐름은 팀이 변경 내용을 검토하고 테스트한 뒤 병합하는 단계로 끝납니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">통합 GitHub 앱으로 업데이트</strong>
+                <p>기존 GitHub notifications 앱 사용자는 최신 버전으로 업데이트하면 됩니다. GitHub 계정을 연결하고 작업할 저장소를 선택해야 합니다.</p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">구형 앱은 11월 16일 종료</strong>
+                <p><code>GitHub (deprecated)</code>로 이름이 바뀌는 구형 앱은 11월 16일 종료될 예정입니다. 발표문에는 Copilot 플랜별 이용 조건이 구체적으로 적혀 있지 않습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="links">
+            <a href="https://github.blog/changelog/2026-10-23-turn-notifications-into-code-with-github-copilot-in-teams/">GitHub Copilot in Teams</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brief">
+        <div class="label">
+          <span class="badge green">04 Research</span>
+          <span class="signal">선정 이유: 실행 전 검증·장애·기억 연구 5선</span>
+        </div>
+        <div>
+          <h2>이번 주 연구 노트: 에이전트는 실행 전 상태와 실패 뒤 복구까지 평가해야 한다</h2>
+          <div class="brief-body">
+            <p>이번 주 논문은 잘못된 도구 호출의 사전 차단, MCP 장애 주입, 장기 기억, 인용 근거가 붙은 지식 그래프, 외부 정답 없는 자기학습을 다룹니다. 공통점은 에이전트의 답보다 실행 조건·복구력·근거 구조를 함께 측정해야 한다는 점입니다.</p>
+            <div class="keyword-cards" aria-label="이번 주 연구 노트 핵심 키워드">
+              <div class="keyword-card">
+                <strong class="keyword-title">StateMirror: 실행 전에 틀린 전제를 잡는다</strong>
+                <p>없는 경로나 패키지를 전제로 한 도구 호출을 저장소 상태와 대조해 실행 전에 막습니다. 79개 실시간 과제의 시간 15.8%, 토큰 11.8% 감소는 특정 코딩 하네스에서 나온 결과입니다. <a href="https://arxiv.org/abs/2610.32648">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">MCP Faults: 큰 모델도 장애에 강하진 않다</strong>
+                <p>공개 MCP 저장소 1,774개의 이슈·PR 57,240건에서 장애 유형을 만들고 주입했더니 과제 점수가 60% 떨어졌습니다. 결론은 실험한 두 gpt-oss 크기와 세 에이전트 스택 범위입니다. <a href="https://arxiv.org/abs/2610.32555">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">ActionRAG: 기억의 주변 관계를 다시 계산</strong>
+                <p>처음 찾은 문서 점수만 믿지 않고 주변 그래프 경로로 증거의 우선순위를 다시 매깁니다. 평균 55.1은 논문이 정한 8개 평가 항목의 점수이며 모든 장기 기억 과제에 적용되는 수치는 아닙니다. <a href="https://arxiv.org/abs/2610.32752">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">Every Edge Needs a Quote: 관계마다 원문 인용</strong>
+                <p>의료 소프트웨어 도입 관계를 지식 그래프로 만들 때 모든 연결에 원문 인용을 요구했습니다. 0.94 정밀도와 0.71 재현율은 61개 공급사와 연구진이 만든 페이지 수준 키 기준입니다. <a href="https://arxiv.org/abs/2610.32781">arXiv</a></p>
+              </div>
+              <div class="keyword-card">
+                <strong class="keyword-title">On-Policy Self-Training: 정답 없이 스스로 교과과정 만들기</strong>
+                <p>상위 주제만 주면 모델이 질문·답·추론 예시를 만들고 이를 다시 학습하는 방법을 제안합니다. 텍스트와 시각 질의응답 실험의 개선이지, 외부 검증 없이 모든 지식이 정확해진다는 뜻은 아닙니다. <a href="https://arxiv.org/abs/2610.32770">arXiv</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="source-table">
+      <h2 class="section-title">Source List</h2>
+      <ul class="source-grid">
+        <li><a href="https://blog.google/company-news/outreach-and-initiatives/arts-culture/visionaries-petit-palais-art-basel-paris-prune-nourry/">Google Arts &amp; Culture: Visionaries</a></li>
+        <li><a href="https://openai.com/index/introducing-gpt-6-1-terra/">OpenAI: Introducing GPT-6.1 Terra</a></li>
+        <li><a href="https://openai.com/index/openai-models-google-cloud/">OpenAI: Models are coming to Google Cloud</a></li>
+        <li><a href="https://openai.com/index/broad-access-through-consistent-standards/">OpenAI: Broad access through consistent standards</a></li>
+        <li><a href="https://huggingface.co/blog/ibm-granite/granite-speech-5">IBM: Granite Speech 5.0</a></li>
+        <li><a href="https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop">Anthropic: When to fold subagents into the main loop</a></li>
+        <li><a href="https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview/">GitHub: Package firewall public preview</a></li>
+        <li><a href="https://github.blog/changelog/2026-10-23-turn-notifications-into-code-with-github-copilot-in-teams/">GitHub: Turn Teams notifications into code</a></li>
+        <li><a href="https://arxiv.org/abs/2610.32648">arXiv: StateMirror</a></li>
+        <li><a href="https://arxiv.org/abs/2610.32555">arXiv: Tool-Calling LLM Agents Under Realistic MCP Faults</a></li>
+        <li><a href="https://arxiv.org/abs/2610.32752">arXiv: ActionRAG</a></li>
+        <li><a href="https://arxiv.org/abs/2610.32781">arXiv: Every Edge Needs a Quote</a></li>
+        <li><a href="https://arxiv.org/abs/2610.32770">arXiv: On-Policy Self-Training</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
